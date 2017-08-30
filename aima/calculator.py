@@ -18,11 +18,16 @@ from search import ( # Algoritmos de búsqueda informada (heurística)
 )
 
 class Calculator(Problem):
-    def __init__(self, inicial=(2,3,0), meta=(2,3,29)):
+
+	# (A, B, C) -> (A, B, GOAL)
+
+    def __init__(self, inicial=(2,3,0), meta=(2,3,13)):
     	Problem.__init__(self, inicial, meta)
     	self.acciones = ["+A", "+B", "*A" , "*B"]
 
     def actions(self, estado):
+
+    	# Para simplificar el problema, todas las operaciones se hacen sobre C
 
     	# +A
     	# +B
@@ -54,6 +59,7 @@ class Calculator(Problem):
     	elif(accion == "*B"):
     		return nuevo_estado(estado, estado[1]*estado[2])
 
+    # Esto es para la heurística, aún no se usa
     def h(self, node):
     	total, goal = node.state
     	totalN, goalN = self.goal
@@ -89,11 +95,15 @@ def despliega_solucion(nodo_meta):
 	print('FIN')
 
 def main():
+	
 	print("MAIN")
 	prob1 = Calculator()
 
-	prob2 = Calculator((2,6,0), (2,6,7))
+	prob2 = Calculator((2,6,0), (2,6,15))
+	prob3 = Calculator((3,7,11), (3,7,100))
 	# Resolviendo el problema 1:
+
+	print("Problema 1: (2, 3, 0) -> 13")
 	print("Solución del Problema 1 mediante búsqueda primero en anchura")
 	meta1 = breadth_first_search(prob1)
 	if meta1:
@@ -101,6 +111,7 @@ def main():
 	else:
 	    print("Falla: no se encontró una solución")
 
+	print("Problema 2: (2, 6, 0) -> 15")
 	# Resolviendo el problema 2:
 	print("Solución del Problema 2 mediante búsqueda primero en anchura")
 	meta2 = breadth_first_search(prob2)
@@ -108,6 +119,16 @@ def main():
 	    despliega_solucion(meta2)
 	else:
 	    print("Falla: no se encontró una solución")
+
+	print("Problema 3: (3, 7, 11) -> 100")
+	# Resolviendo el problema 2:
+	print("Solución del Problema 3 mediante búsqueda primero en anchura")
+	meta3 = breadth_first_search(prob3)
+	if meta3:
+	    despliega_solucion(meta3)
+	else:
+	    print("Falla: no se encontró una solución")
+
 
 
 
