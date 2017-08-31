@@ -1,0 +1,156 @@
+from search import ( # Bases para construcción de problemas
+    Problem, Node, Graph, UndirectedGraph,
+    SimpleProblemSolvingAgentProgram,
+    GraphProblem
+)
+
+from search import ( # Algoritmos de búsqueda no informada
+    tree_search, graph_search, best_first_graph_search,
+    breadth_first_tree_search, breadth_first_search,
+    depth_first_tree_search, depth_first_graph_search,
+    depth_limited_search, iterative_deepening_search,
+    uniform_cost_search,
+    compare_searchers
+)
+
+from search import ( # Algoritmos de búsqueda informada (heurística)
+    greedy_best_first_graph_search, astar_search
+)
+
+class Calculator(Problem):
+
+	# (A, B, C) -> (A, B, GOAL)
+
+    def __init__(self, inicial=(2,3,0,0), meta=(2,3,34, 0)):
+    	Problem.__init__(self, inicial, meta)
+    	self.acciones = ["A", "B", "*" , "+"]
+
+    def actions(self, estado):
+
+    	# Para simplificar el problema, todas las operaciones se hacen sobre C
+
+    	# +A
+    	# +B
+    	# *A
+    	# *B
+    	accs = []
+    	for accion in self.acciones:
+    		if(accion == "A") and \
+    			not estado_ilegal(nuevo_estado(estado, estado[0]), self.goal):
+    			accs.append("A")
+    		elif(accion == "B") and \
+    			not estado_ilegal(nuevo_estado(estado, estado[1]), self.goal):
+    			accs.append("B")
+    		elif(accion == "+") and \
+    			not estado_ilegal(nuevo_estado(estado, "+"), self.goal):
+    			accs.append("+")
+    		elif(accion == "*") and \
+    			not estado_ilegal(nuevo_estado(estado, "*"), self.goal):
+    			accs.append("*")
+    		# elif(accion == "=") and \
+    		# 	not estado_ilegal(nuevo_estado(estado, "="), self.goal):
+    		# 	accs.append("=")
+    	return accs
+
+    def result(self, estado, accion):
+    	if(accion == "A"):
+    		return nuevo_estado(estado, estado[0])
+    	elif(accion == "B"):
+    		return nuevo_estado(estado, estado[1])
+    	elif(accion == "+"):
+    		return nuevo_estado(estado, "+")
+    	elif(accion == "*"):
+    		return nuevo_estado(estado, "*")
+
+    # Esto es para la heurística, aún no se usa
+    def h(self, node):
+    	total, goal = node.state
+    	totalN, goalN = self.goal
+
+    	print("STATE")
+    	print(node.state)
+    	print(self.goal)
+
+def nuevo_estado(edo, accion):
+	nedo = list(edo)
+	if(accion == "+"):
+		nedo[2] += nedo[3]
+		nedo[3] = 0
+	elif(accion == "*"):
+		nedo[2] *= nedo[3]
+		nedo[3] = 0
+	else:
+		nedo[3] = appendLast(accion, nedo[3])
+
+
+	return tuple(nedo)
+
+def estado_ilegal(edo, meta):
+	return edo[2] > meta[2] or edo[3] > meta[2]
+
+def despliega_solucion(nodo_meta):
+	acciones = nodo_meta.solution()
+	nodos = nodo_meta.path()
+	print("SOLUCION")
+	print("Estado: ", nodos[0].state)
+	for na in range(len(acciones)):
+
+		if(acciones[na] == "+"):
+			print("Acción: Suma")
+		elif(acciones[na] == "*"):
+			print("Acción: Multiplicación")
+		if(acciones[na] == "A"):
+			print("Acción: A")
+		elif(acciones[na] == "B"):
+			print("Acción: B")
+		print("Estado: ", nodos[na+1].state)
+	print('FIN')
+
+def main():
+	
+	print("MAIN")
+	prob1 = Calculator()
+
+	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
+	prob3 = Calculator((3,7,0,0), (3,7,100,0))
+	# Resolviendo el problema 1:
+
+	print("Problema 1: (2, 3, 0) -> 13")
+	print("Solución del Problema 1 mediante búsqueda primero en anchura")
+	meta1 = breadth_first_search(prob1)
+	if meta1:
+	    despliega_solucion(meta1)
+	else:
+	    print("Falla: no se encontró una solución")
+
+	print("Problema 2: (2, 6, 0) -> 15")
+	# Resolviendo el problema 2:
+	print("Solución del Problema 2 mediante búsqueda primero en anchura")
+	meta2 = breadth_first_search(prob2)
+	if meta2:
+	    despliega_solucion(meta2)
+	else:
+	    print("Falla: no se encontró una solución")
+
+	print("Problema 3: (3, 7, 11) -> 100")
+	# Resolviendo el problema 2:
+	print("Solución del Problema 3 mediante búsqueda primero en anchura")
+	meta3 = breadth_first_search(prob3)
+	if meta3:
+	    despliega_solucion(meta3)
+	else:
+	    print("Falla: no se encontró una solución")
+
+def getDigits(num):
+	digits = 0
+	while(num % 10 > 0):
+		digits += 1
+		num = num // 10
+	return digits
+
+def appendLast(head, tail):
+	tail += head * (10 ** getDigits(tail))
+	return tail
+
+if __name__ == "__main__":
+	main()
