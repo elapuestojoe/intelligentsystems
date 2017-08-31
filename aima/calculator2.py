@@ -64,8 +64,7 @@ class Calculator(Problem):
 
     # Esto es para la heurística, aún no se usa
     def h(self, node):
-    	# total, goal = node.state
-    	# totalN, goalN = self.goal
+    	print(self.goal)
     	return abs(self.goal[2] - node.state[2] - node.state[3])
 
 def nuevo_estado(edo, accion):
@@ -106,13 +105,13 @@ def despliega_solucion(nodo_meta):
 def main():
 	
 	print("MAIN")
+	
 	prob1 = Calculator()
-
 	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
-	prob3 = Calculator((3,7,0,0), (3,7,100,0))
+	prob3 = Calculator((3,7,11,0), (3,7,100,0))
+	
 	# Resolviendo el problema 1:
-
-	print("Problema 1: (2, 3, 0) -> 13")
+	print("\nProblema 1: (2, 3, 0) -> 34")
 	print("Solución del Problema 1 mediante búsqueda primero en anchura")
 	meta1 = breadth_first_search(prob1)
 	if meta1:
@@ -120,8 +119,9 @@ def main():
 	else:
 	    print("Falla: no se encontró una solución")
 
-	print("Problema 2: (2, 6, 0) -> 15")
+
 	# Resolviendo el problema 2:
+	print("\nProblema 2: (2, 6, 0) -> 15")
 	print("Solución del Problema 2 mediante búsqueda primero en anchura")
 	meta2 = breadth_first_search(prob2)
 	if meta2:
@@ -129,8 +129,9 @@ def main():
 	else:
 	    print("Falla: no se encontró una solución")
 
-	print("Problema 3: (3, 7, 11) -> 100")
-	# Resolviendo el problema 2:
+
+	# Resolviendo el problema 3:
+	print("\nProblema 3: (3, 7, 11) -> 100")
 	print("Solución del Problema 3 mediante búsqueda primero en anchura")
 	meta3 = breadth_first_search(prob3)
 	if meta3:
@@ -150,9 +151,7 @@ def main():
 	if(meta5):
 		despliega_solucion(meta5)
 	else:
-		print("Falla")
-
-def getDigits(num):
+		print("Falla")def getDigits(num):
 	digits = 0
 	while(num % 10 > 0):
 		digits += 1
