@@ -64,7 +64,25 @@ class Calculator(Problem):
 
     # Esto es para la heurística, aún no se usa
     def h(self, node):
+<<<<<<< HEAD
+    	# total, goal = node.state
+    	# totalN, goalN = self.goal
     	return abs(self.goal[2] - node.state[2] - node.state[3])
+=======
+    	#total, goal = node.state
+    	#totalN, goalN = self.goal
+
+    	#print("STATE")
+    	#print(node.state)
+    	#print(self.goal)
+    	
+    	
+    	nodeS = node.state
+    	goalN = self.goal
+    	
+    	return abs(nodeS[2] - goalN[2])
+    	
+>>>>>>> 0ff20f48ec574962beb83fb339e538dc11f78943
 
 def nuevo_estado(edo, accion):
 	nedo = list(edo)
@@ -138,6 +156,7 @@ def main():
 	else:
 	    print("Falla: no se encontró una solución")
 
+<<<<<<< HEAD
 	print("Solución del Problema 3 mediante búsqueda uniform")
 	meta4 = uniform_cost_search(prob3)
 	if(meta4):
@@ -151,7 +170,19 @@ def main():
 		despliega_solucion(meta5)
 	else:
 		print("Falla")
+=======
 
+	# Resolviendo el problema 3:
+	print("\nProblema 3: (3, 7, 11) -> 100")
+	print("Solución del Problema 3 mediante A*")
+	meta4 = astar_search(prob3)
+	if meta3:
+	    despliega_solucion(meta4)
+	else:
+	    print("Falla: no se encontró una solución")
+
+
+>>>>>>> 0ff20f48ec574962beb83fb339e538dc11f78943
 
 def getDigits(num):
 	digits = 0
