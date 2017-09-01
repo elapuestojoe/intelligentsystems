@@ -38,16 +38,16 @@ class Calculator(Problem):
 		accs = []
 		for accion in self.acciones:
 			if(accion == "A") and \
-				not estado_ilegal(nuevo_estado(estado, estado[0]), accion):
+				not estado_ilegal(nuevo_estado(estado, estado[0]), accion, self.goal):
 				accs.append("A")
 			elif(accion == "B") and \
-				not estado_ilegal(nuevo_estado(estado, estado[1]), accion):
+				not estado_ilegal(nuevo_estado(estado, estado[1]), accion, self.goal):
 				accs.append("B")
 			elif(accion == "+") and \
-				not estado_ilegal(nuevo_estado(estado, "+"), accion):
+				not estado_ilegal(nuevo_estado(estado, "+"), accion, self.goal):
 				accs.append("+")
 			elif(accion == "*") and \
-				not estado_ilegal(nuevo_estado(estado, "*"), accion):
+				not estado_ilegal(nuevo_estado(estado, "*"), accion, self.goal):
 				accs.append("*")
 		return accs
 
@@ -81,10 +81,10 @@ def nuevo_estado(edo, accion):
 
 	return tuple(nedo)
 
-def estado_ilegal(edo, accion):
-	# return edo[2] > meta[2] or edo[3] > meta[2]
+def estado_ilegal(edo, accion, goal):
+	return edo[2] > goal[2] or edo[3] > goal[2]
 	# return False
-	return (accion == "+" or accion == "*") and edo[3] != 0
+	# return (accion == "+" or accion == "*") and edo[3] != 0
 
 def despliega_solucion(nodo_meta):
 	acciones = nodo_meta.solution()
@@ -109,15 +109,25 @@ def main():
 	print("MAIN")
 	
 	prob1 = Calculator()
-	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
+	Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy", prob1.h)
+	Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
+	Solve(prob1, "Problema 1", astar_search, "A*", prob1.h)
+	Solve(prob1, "Problema 1", breadth_first_search, "Breath first search", None)
 
-	# BUEN EJEMPLO DE ALGORITMOS
-	prob3 = Calculator((3,7,0,0), (3,7,23,0))
+	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
+	Solve(prob2, "Problema 2", greedy_best_first_graph_search, "Greedy", prob2.h)
+	Solve(prob2, "Problema 2", uniform_cost_search, "Uniform", None)
+	Solve(prob2, "Problema 2", astar_search, "A*", prob2.h)
+	Solve(prob2, "Problema 2", breadth_first_search, "Breath first search", None)
+
+	prob3 = Calculator((3,7,0,0), (3,7,1000,0))
 	# Solve(prob3, "Problema 3", graph_search, "Graph Search", [])
 	Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob3.h)
 	Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
 	Solve(prob3, "Problema 3", astar_search, "A*", prob3.h)
 	Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
+
+
 
 
 	# # Resolviendo el problema 1:
