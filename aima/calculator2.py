@@ -119,11 +119,12 @@ def main():
 					# "Problema4" : prob4
 					}
 
-	# Solve(prob3, "Problema 1", graph_search, "Graph Search", [])
-	Solve(prob3, "Problema 1", greedy_best_first_graph_search, "Greedy", prob1.h)
-	# Solve(prob3, "Problema 1", uniform_cost_search, "Uniform", None)
-	# Solve(prob3, "Problema 1", breadth_first_search, "Breath", None)
-	Solve(prob3, "Problema 1", astar_search, "A*", None)
+	# Solve(prob3, "Problema 3", graph_search, "Graph Search", [])
+	Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob1.h)
+	# Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
+	# Solve(prob3, "Problema 3", breadth_first_search, "Breath", None)
+	Solve(prob3, "Problema 3", astar_search, "A*", prob1.h)
+	# Solve(prob3, "Problema 3", depth_limited_search, "Depht limited search", None)
 
 
 	# nonInformedAlgorithms = {
