@@ -27,20 +27,19 @@ class Calculator(Problem):
 		self.acciones = ["A", "B", "*" , "+"]
 
 	def actions(self, estado):
-		accs = []
+		accs = ["A", "B"]
 		for accion in self.acciones:
-			if(accion == "A") and \
-				not estado_ilegal(nuevo_estado(estado, estado[0]), accion, self.goal):
-				accs.append("A")
-			elif(accion == "B") and \
-				not estado_ilegal(nuevo_estado(estado, estado[1]), accion, self.goal):
-				accs.append("B")
-			elif(accion == "+") and \
-				not estado_ilegal(nuevo_estado(estado, "+"), accion, self.goal):
+			# if(accion == "A") and \
+			# 	not estado_ilegal(nuevo_estado(estado, estado[0]), accion, self.goal):
+			# 	accs.append("A")
+			# elif(accion == "B") and \
+			# 	not estado_ilegal(nuevo_estado(estado, estado[1]), accion, self.goal):
+			# 	accs.append("B")
+			if(accion == "+" and estado[3]!=0):
 				accs.append("+")
-			elif(accion == "*") and \
-				not estado_ilegal(nuevo_estado(estado, "*"), accion, self.goal):
+			elif(accion == "*" and estado[3]!=0):
 				accs.append("*")
+		print(accs, estado)
 		return accs
 
 	def result(self, estado, accion):
@@ -59,12 +58,11 @@ class Calculator(Problem):
 		c = abs(self.goal[2] - (node.state[2] + (node.state[0] + node.state[3])))
 		d = abs(self.goal[2] - (node.state[2] + (node.state[1] + node.state[3])))
 		# return(min([a,b,c,d,e,f, g, h, i, j, k, l]))
-		return(min([a,b,c,d]))
+		return(min([a,b,c,d])// self.goal[2])
 		# Segunda heurística
-		# return abs(self.goal[2] - (node.state[2] + ((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) / 2)))
+		# return abs(self.goal[2] - (node.state[2] + ((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) / 2))) // self.goal[2]
 
-		
-
+		# return min(a,b)
 
 def nuevo_estado(edo, accion):
 	nedo = list(edo)
@@ -72,7 +70,7 @@ def nuevo_estado(edo, accion):
 		nedo[2] += nedo[3]
 		nedo[3] = 0
 	elif(accion == "*"):
-		nedo[2] *= nedo[3]
+		nedo[2] = nedo[2] * nedo[3]
 		nedo[3] = 0
 	else:
 		nedo[3] = nedo[3] * 10 + accion
@@ -85,7 +83,9 @@ def estado_ilegal(edo, accion, goal):
 	# In the case of an impossible problem, every possible state would keep searching for a solution up to infinity until the system overflows.
 	# print(edo, accion)
 	# print(accion == "*")
-	# return edo[3] != 0 and accion == "*" # This only restricts for
+	# if(edo[3]==0):
+	# 	return accion == "*" or accion == "+"
+	# return edo[3] == 0 and accion == "*" # This only restricts for
 	return False
 
 def despliega_solucion(nodo_meta):
@@ -94,7 +94,6 @@ def despliega_solucion(nodo_meta):
 	print("SOLUCION")
 	print("Estado: ", nodos[0].state)
 	for na in range(len(acciones)):
-
 		if(acciones[na] == "+"):
 			print("Acción: Suma")
 		elif(acciones[na] == "*"):
@@ -122,12 +121,12 @@ def main():
 	# Solve(prob2, "Problema 2", astar_search, "A*", prob2.h)
 	# Solve(prob2, "Problema 2", breadth_first_search, "Breath first search", None)
 
-	prob3 = Calculator((3,7,0,0), (3,7,147,0))
+	prob3 = Calculator((3,7,0,0), (3,7,63,0))
 	# Solve(prob3, "Problema 3", graph_search, "Graph Search", [])
-	# Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob3.h)
+	Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob3.h)
 	Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
 	Solve(prob3, "Problema 3", astar_search, "A*", prob3.h)
-	# Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
+	Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
 
 
 
