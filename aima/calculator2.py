@@ -62,9 +62,16 @@ class Calculator(Problem):
 			return nuevo_estado(estado, "*")
 
 	def h(self, node):
-		# return abs(self.goal[2] - node.state[2] - node.state[3])
 
-		# Segunga heurística
+		# Primera heurística
+		# a = abs(self.goal[2] - (node.state[0] * node.state[3]))
+		# b = abs(self.goal[2] - (node.state[1] * node.state[3]))
+		# c = abs(self.goal[2] - (node.state[0] + node.state[3]))
+		# d = abs(self.goal[2] - (node.state[1] + node.state[3]))
+
+		# return(min([a,b,c,d]))
+
+		# Segunda heurística
 		return abs(self.goal[2] - (node.state[2] + ((node.state[3] + node.state[1]) + (node.state[3] + node.state[2]) / 2)))
 
 
@@ -108,24 +115,24 @@ def main():
 	
 	print("MAIN")
 	
-	prob1 = Calculator()
-	Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy", prob1.h)
-	Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
-	Solve(prob1, "Problema 1", astar_search, "A*", prob1.h)
-	Solve(prob1, "Problema 1", breadth_first_search, "Breath first search", None)
+	# prob1 = Calculator()
+	# Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy", prob1.h)
+	# Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
+	# Solve(prob1, "Problema 1", astar_search, "A*", prob1.h)
+	# Solve(prob1, "Problema 1", breadth_first_search, "Breath first search", None)
 
-	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
-	Solve(prob2, "Problema 2", greedy_best_first_graph_search, "Greedy", prob2.h)
-	Solve(prob2, "Problema 2", uniform_cost_search, "Uniform", None)
-	Solve(prob2, "Problema 2", astar_search, "A*", prob2.h)
-	Solve(prob2, "Problema 2", breadth_first_search, "Breath first search", None)
+	# prob2 = Calculator((2,6,0,0), (2,6,15, 0))
+	# Solve(prob2, "Problema 2", greedy_best_first_graph_search, "Greedy", prob2.h)
+	# Solve(prob2, "Problema 2", uniform_cost_search, "Uniform", None)
+	# Solve(prob2, "Problema 2", astar_search, "A*", prob2.h)
+	# Solve(prob2, "Problema 2", breadth_first_search, "Breath first search", None)
 
-	prob3 = Calculator((3,7,0,0), (3,7,1000,0))
+	prob3 = Calculator((3,7,0,0), (3,7,1007,0))
 	# Solve(prob3, "Problema 3", graph_search, "Graph Search", [])
 	Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob3.h)
-	Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
+	# Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
 	Solve(prob3, "Problema 3", astar_search, "A*", prob3.h)
-	Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
+	# Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
 
 
 
