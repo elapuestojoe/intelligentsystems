@@ -1,3 +1,4 @@
+import time
 from search import ( # Bases para construcción de problemas
 	Problem, Node, Graph, UndirectedGraph,
 	SimpleProblemSolvingAgentProgram,
@@ -101,7 +102,7 @@ def despliega_solucion(nodo_meta):
 		elif(acciones[na] == "B"):
 			print("Acción: B")
 		print("Estado: ", nodos[na+1].state)
-	print('FIN')
+	print("Total Acciones: {}".format(len(acciones)))
 
 def main():
 	
@@ -109,54 +110,14 @@ def main():
 	
 	prob1 = Calculator()
 	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
-	prob3 = Calculator((3,7,0,0), (3,7,100,0))
-	prob4 = Calculator((2,5,0,0), (2,5,111,0))
 
-	problemList = 	{
-					"Problema1": prob1, 
-					# "Problema 2" : prob2,
-					# "Problema 3" : prob3,
-					# "Problema4" : prob4
-					}
-
+	# BUEN EJEMPLO DE ALGORITMOS
+	prob3 = Calculator((3,7,0,0), (3,7,23,0))
 	# Solve(prob3, "Problema 3", graph_search, "Graph Search", [])
 	Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob3.h)
-	# Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
-	# Solve(prob3, "Problema 3", breadth_first_search, "Breath", None)
+	Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
 	Solve(prob3, "Problema 3", astar_search, "A*", prob3.h)
-	# Solve(prob3, "Problema 3", depth_limited_search, "Depht limited search", None)
-
-
-	# nonInformedAlgorithms = {
-	# 						# "Tree search" : tree_search, 
-	# 						"Graph search"  : graph_search, 
-	# 						# "Best first graph search" : best_first_graph_search,
-	# 						"Breadth first tree search " : breadth_first_tree_search, 
-	# 						"Breadth first search " : breadth_first_search,
-	# 						# depth_first_tree_search, 
-	# 						# depth_first_graph_search,
-	# 						# depth_limited_search, 
-	# 						# iterative_deepening_search,
-	# 						"Uniform cost search" : uniform_cost_search
-	# 						}
-
-	# informedAlgorithms = {
-	# 						"Greedy" : greedy_best_first_graph_search, 
-	# 						"A*" : astar_search
-	# 						}
-
-	# for keyProblem in problemList:
-		
-	# 	problem = problemList[keyProblem]
-		
-	# 	for keyAlgorithm in nonInformedAlgorithms:
-	# 		algorithm = nonInformedAlgorithms[keyAlgorithm]
-	# 		Solve(problem, keyProblem, algorithm, keyAlgorithm)
-
-	# 	for keyAlgorithm in informedAlgorithms:
-	# 		algorithm = informedAlgorithms[keyAlgorithm]
-	# 		Solve(problem, keyProblem, algorithm, keyAlgorithm)
-
+	Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
 
 
 	# # Resolviendo el problema 1:
@@ -206,6 +167,7 @@ def Solve(problem, problemName, algorithm, algorithmName, extraParameter):
 	print("Solución del {} mediante {}".format(problemName, algorithmName))
 	print("Initial state {} -> Goal state {}".format(problem.initial, problem.goal))
 
+	start = time.time()
 	meta = None
 	if(extraParameter != None):
 		meta = algorithm(problem, extraParameter)
@@ -216,6 +178,8 @@ def Solve(problem, problemName, algorithm, algorithmName, extraParameter):
 		despliega_solucion(meta)
 	else:
 		print("Falla: no se encontró una solución")
+	end = time.time()
+	print("Tiempo de función: {}".format(end-start))
 
 if __name__ == "__main__":
 	main()
