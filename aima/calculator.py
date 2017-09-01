@@ -61,13 +61,6 @@ class Calculator(Problem):
 
     # Esto es para la heurística, aún no se usa
     def h(self, node):
-    	#total, goal = node.state
-    	#totalN, goalN = self.goal
-
-    	#print("STATE")
-    	#print(node.state)
-    	#print(self.goal)
-    	
     	
     	nodeS = node.state
     	goalN = self.goal

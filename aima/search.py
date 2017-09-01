@@ -182,6 +182,7 @@ def tree_search(problem, frontier):
     Don't worry about repeated paths to a state. [Figure 3.7]"""
     frontier.append(Node(problem.initial))
     while frontier:
+        # print(frontier)
         node = frontier.pop()
         if problem.goal_test(node.state):
             return node
