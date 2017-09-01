@@ -64,7 +64,7 @@ class Calculator(Problem):
 		# return abs(self.goal[2] - node.state[2] - node.state[3])
 
 		# Segunga heurística
-		return abs(self.goal[2] - ((node.state[3] + node.state[1]) + (node.state[3] + node.state[2]) / 2))
+		return abs(self.goal[2] - (node.state[2] + ((node.state[3] + node.state[1]) + (node.state[3] + node.state[2]) / 2)))
 
 
 def nuevo_estado(edo, accion):
