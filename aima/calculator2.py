@@ -1,3 +1,14 @@
+# Course data:
+#	CS4000 Intelligent Systems
+#	Mon 16-19 Tue 10-13
+# Activity:
+#	Assignment 2. Problem-Solving Agents
+# Date:
+#	September 1, 2017
+# Team members:
+#	Miryam Elizabeth Villa Perez	A01371614
+#	Kevin Islas Abud				A01372023
+
 import time
 from search import ( # Bases para construcción de problemas
 	Problem, Node, Graph, UndirectedGraph,
