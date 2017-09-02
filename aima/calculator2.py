@@ -33,6 +33,8 @@ class Calculator(Problem):
 				accs.append("+")
 			elif(accion == "*" and estado[3]!=0):
 				accs.append("*")
+			elif(accion == "-" and estado[3]!=0):
+				accs.append("-")
 		return accs
 
 	def result(self, estado, accion):
@@ -44,6 +46,8 @@ class Calculator(Problem):
 			return nuevo_estado(estado, "+")
 		elif(accion == "*"):
 			return nuevo_estado(estado, "*")
+		elif(accion == "-"):
+			return nuevo_estado(estado, "-")
 
 	def h1(self, node):
 
@@ -51,12 +55,14 @@ class Calculator(Problem):
 		b = abs(self.goal[2] - (node.state[2] + (node.state[1] * node.state[3])))
 		c = abs(self.goal[2] - (node.state[2] + (node.state[0] + node.state[3])))
 		d = abs(self.goal[2] - (node.state[2] + (node.state[1] + node.state[3])))
-		return(min([a,b,c,d])// self.goal[2])
+		return(min([a,b,c,d])// abs(self.goal[2]))
 
 	def h2(self, node):
 
-		return abs(self.goal[2] - (node.state[2] +
-			((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) / 2))) // self.goal[2]
+		# return abs(self.goal[2] - (node.state[2] +
+		# 	((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) // 2))) // self.goal[2]
+
+		return abs((self.goal[2] - node.state[2] - node.state[3]) // self.goal[2])
 
 
 def nuevo_estado(edo, accion):
@@ -65,7 +71,10 @@ def nuevo_estado(edo, accion):
 		nedo[2] += nedo[3]
 		nedo[3] = 0
 	elif(accion == "*"):
-		nedo[2] = nedo[2] * nedo[3]
+		nedo[2] *= nedo[3]
+		nedo[3] = 0
+	elif(accion == "-"):
+		nedo[2] -= nedo[3]
 		nedo[3] = 0
 	else:
 		nedo[3] = nedo[3] * 10 + accion
@@ -118,11 +127,11 @@ def main():
 	# Solve(prob3, "Problema 3", astar_search, "A* (h1)", prob3.h1)
 	# Solve(prob3, "Problema 3", astar_search, "A* (h2)", prob3.h2)
 
-	prob4 = Calculator((3,7,0,0), (3,7,106,0))
-	Solve(prob4, "Problema 4", breadth_first_search, "Breath first search", None)
+	prob4 = Calculator((3,7,0,0), (3,7,100,0))
+	# Solve(prob4, "Problema 4", breadth_first_search, "Breath first search", None)
 	# Solve(prob3, "Problema 3", graph_search, "Graph Search", []) # 3, 14, 17 si funciona, 6 no
-	Solve(prob4, "Problema 4", depth_limited_search, "Depth limited search", None)
-	Solve(prob4, "Problema 4", uniform_cost_search, "Uniform", None)
+	# Solve(prob4, "Problema 4", depth_limited_search, "Depth limited search", None)
+	# Solve(prob4, "Problema 4", uniform_cost_search, "Uniform", None)
 	Solve(prob4, "Problema 4", greedy_best_first_graph_search, "Greedy (h1)", prob4.h1) #ESTE ES LA ONDA
 	Solve(prob4, "Problema 4", greedy_best_first_graph_search, "Greedy (h2)", prob4.h2) #ESTE ES LA ONDA
 	Solve(prob4, "Problema 4", astar_search, "A* (h1)", prob4.h1)
