@@ -29,17 +29,10 @@ class Calculator(Problem):
 	def actions(self, estado):
 		accs = ["A", "B"]
 		for accion in self.acciones:
-			# if(accion == "A") and \
-			# 	not estado_ilegal(nuevo_estado(estado, estado[0]), accion, self.goal):
-			# 	accs.append("A")
-			# elif(accion == "B") and \
-			# 	not estado_ilegal(nuevo_estado(estado, estado[1]), accion, self.goal):
-			# 	accs.append("B")
 			if(accion == "+" and estado[3]!=0):
 				accs.append("+")
 			elif(accion == "*" and estado[3]!=0):
 				accs.append("*")
-		print(accs, estado)
 		return accs
 
 	def result(self, estado, accion):
@@ -52,17 +45,19 @@ class Calculator(Problem):
 		elif(accion == "*"):
 			return nuevo_estado(estado, "*")
 
-	def h(self, node):
+	def h1(self, node):
+
 		a = abs(self.goal[2] - (node.state[2] + (node.state[0] * node.state[3])))
 		b = abs(self.goal[2] - (node.state[2] + (node.state[1] * node.state[3])))
 		c = abs(self.goal[2] - (node.state[2] + (node.state[0] + node.state[3])))
 		d = abs(self.goal[2] - (node.state[2] + (node.state[1] + node.state[3])))
-		# return(min([a,b,c,d,e,f, g, h, i, j, k, l]))
 		return(min([a,b,c,d])// self.goal[2])
-		# Segunda heurística
-		# return abs(self.goal[2] - (node.state[2] + ((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) / 2))) // self.goal[2]
 
-		# return min(a,b)
+	def h2(self, node):
+
+		return abs(self.goal[2] - (node.state[2] +
+			((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) / 2))) // self.goal[2]
+
 
 def nuevo_estado(edo, accion):
 	nedo = list(edo)
@@ -76,17 +71,6 @@ def nuevo_estado(edo, accion):
 		nedo[3] = nedo[3] * 10 + accion
 
 	return tuple(nedo)
-
-def estado_ilegal(edo, accion, goal):
-	# return edo[2] > goal[2] or edo[3] # This would not allow operations higher than the goal, restricting the problem to allow some blind methods to find a solution,
-	# It would also allow every algorithm to conclude in the case of an impossible problem, without this line, some blind methods can get stuck at infinite combinations of A or B.
-	# In the case of an impossible problem, every possible state would keep searching for a solution up to infinity until the system overflows.
-	# print(edo, accion)
-	# print(accion == "*")
-	# if(edo[3]==0):
-	# 	return accion == "*" or accion == "+"
-	# return edo[3] == 0 and accion == "*" # This only restricts for
-	return False
 
 def despliega_solucion(nodo_meta):
 	acciones = nodo_meta.solution()
@@ -110,23 +94,39 @@ def main():
 	print("MAIN")
 
 	# prob1 = Calculator()
-	# Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy", prob1.h)
-	# Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
-	# Solve(prob1, "Problema 1", astar_search, "A*", prob1.h)
+	# # Solve(prob1, "Problema 1", graph_search, "Graph Search", [])
 	# Solve(prob1, "Problema 1", breadth_first_search, "Breath first search", None)
+	# Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
+	# Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy (h1)", prob1.h1)
+	# Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy (h2)", prob1.h2)
+	# Solve(prob1, "Problema 1", astar_search, "A* (h1)", prob1.h1)
+	# Solve(prob1, "Problema 1", astar_search, "A* (h2)", prob1.h2)
 
-	# prob2 = Calculator((2,6,0,0), (2,6,15, 0))
+	prob2 = Calculator((2,6,0,0), (2,6,15, 0))
 	# Solve(prob2, "Problema 2", greedy_best_first_graph_search, "Greedy", prob2.h)
 	# Solve(prob2, "Problema 2", uniform_cost_search, "Uniform", None)
 	# Solve(prob2, "Problema 2", astar_search, "A*", prob2.h)
 	# Solve(prob2, "Problema 2", breadth_first_search, "Breath first search", None)
 
-	prob3 = Calculator((3,7,0,0), (3,7,63,0))
-	# Solve(prob3, "Problema 3", graph_search, "Graph Search", [])
-	Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy", prob3.h)
-	Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
-	Solve(prob3, "Problema 3", astar_search, "A*", prob3.h)
-	Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
+	# prob3 = Calculator((3,7,0,0), (3,7,107,0))
+	# Solve(prob3, "Problema 3", breadth_first_search, "Breath first search", None)
+	# # Solve(prob3, "Problema 3", graph_search, "Graph Search", []) # 3, 14, 17 si funciona, 6 no
+	# Solve(prob3, "Problema 3", depth_limited_search, "Depth limited search", None)
+	# Solve(prob3, "Problema 3", uniform_cost_search, "Uniform", None)
+	# Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy (h1)", prob3.h1) #ESTE ES LA ONDA
+	# Solve(prob3, "Problema 3", greedy_best_first_graph_search, "Greedy (h2)", prob3.h2) #ESTE ES LA ONDA
+	# Solve(prob3, "Problema 3", astar_search, "A* (h1)", prob3.h1)
+	# Solve(prob3, "Problema 3", astar_search, "A* (h2)", prob3.h2)
+
+	prob4 = Calculator((3,7,0,0), (3,7,106,0))
+	Solve(prob4, "Problema 4", breadth_first_search, "Breath first search", None)
+	# Solve(prob3, "Problema 3", graph_search, "Graph Search", []) # 3, 14, 17 si funciona, 6 no
+	Solve(prob4, "Problema 4", depth_limited_search, "Depth limited search", None)
+	Solve(prob4, "Problema 4", uniform_cost_search, "Uniform", None)
+	Solve(prob4, "Problema 4", greedy_best_first_graph_search, "Greedy (h1)", prob4.h1) #ESTE ES LA ONDA
+	Solve(prob4, "Problema 4", greedy_best_first_graph_search, "Greedy (h2)", prob4.h2) #ESTE ES LA ONDA
+	Solve(prob4, "Problema 4", astar_search, "A* (h1)", prob4.h1)
+	Solve(prob4, "Problema 4", astar_search, "A* (h2)", prob4.h2)
 
 
 
