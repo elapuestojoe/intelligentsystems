@@ -21,27 +21,33 @@ from search import ( # Algoritmos de búsqueda informada (heurística)
 class Calculator(Problem):
 
 	initial = None
-	def __init__(self, inicial=(2,3,0,0), meta=(2,3,34, 0)):
+	acciones = ["A", "B"]
+	digits = None
+	def __init__(self, inicial=(0,0), meta=(34, 0), digits=[2,3], operands=["*", "+"]):
 		Problem.__init__(self, inicial, meta)
 		self.initial = inicial
-		self.acciones = ["A", "B", "*" , "+"]
+		# self.acciones = ["A", "B", "*" , "+"]
+		for operand in operands:
+			self.acciones.append(operand)
+		self.digits = digits
+
 
 	def actions(self, estado):
 		accs = ["A", "B"]
 		for accion in self.acciones:
-			if(accion == "+" and estado[3]!=0):
+			if(accion == "+" and estado[1]!=0):
 				accs.append("+")
-			elif(accion == "*" and estado[3]!=0):
+			elif(accion == "*" and estado[1]!=0):
 				accs.append("*")
-			elif(accion == "-" and estado[3]!=0):
+			elif(accion == "-" and estado[1]!=0):
 				accs.append("-")
 		return accs
 
 	def result(self, estado, accion):
 		if(accion == "A"):
-			return nuevo_estado(estado, estado[0])
+			return nuevo_estado(estado, self.digits[0])
 		elif(accion == "B"):
-			return nuevo_estado(estado, estado[1])
+			return nuevo_estado(estado, self.digits[1])
 		elif(accion == "+"):
 			return nuevo_estado(estado, "+")
 		elif(accion == "*"):
@@ -51,33 +57,33 @@ class Calculator(Problem):
 
 	def h1(self, node):
 
-		a = abs(self.goal[2] - (node.state[2] + (node.state[0] * node.state[3])))
-		b = abs(self.goal[2] - (node.state[2] + (node.state[1] * node.state[3])))
-		c = abs(self.goal[2] - (node.state[2] + (node.state[0] + node.state[3])))
-		d = abs(self.goal[2] - (node.state[2] + (node.state[1] + node.state[3])))
-		return(min([a,b,c,d])// abs(self.goal[2]))
+		a = abs(self.goal[0] - (node.state[0] + (self.digits[0] * node.state[1])))
+		b = abs(self.goal[0] - (node.state[0] + (self.digits[1] * node.state[1])))
+		c = abs(self.goal[0] - (node.state[0] + (self.digits[0] + node.state[1])))
+		d = abs(self.goal[0] - (node.state[0] + (self.digits[1] + node.state[1])))
+		return(min([a,b,c,d])// abs(self.goal[0]))
 
 	def h2(self, node):
 
 		# return abs(self.goal[2] - (node.state[2] +
 		# 	((node.state[0] + node.state[3]) + (node.state[1] + node.state[3]) // 2))) // self.goal[2]
 
-		return abs((self.goal[2] - node.state[2] - node.state[3]) // self.goal[2])
+		return abs((self.goal[0] - node.state[0] - node.state[1]) // self.goal[0])
 
 
 def nuevo_estado(edo, accion):
 	nedo = list(edo)
 	if(accion == "+"):
-		nedo[2] += nedo[3]
-		nedo[3] = 0
+		nedo[0] += nedo[1]
+		nedo[1] = 0
 	elif(accion == "*"):
-		nedo[2] *= nedo[3]
-		nedo[3] = 0
+		nedo[0] *= nedo[1]
+		nedo[1] = 0
 	elif(accion == "-"):
-		nedo[2] -= nedo[3]
-		nedo[3] = 0
+		nedo[0] -= nedo[1]
+		nedo[1] = 0
 	else:
-		nedo[3] = nedo[3] * 10 + accion
+		nedo[1] = nedo[1] * 10 + accion
 
 	return tuple(nedo)
 
@@ -102,11 +108,11 @@ def main():
 	
 	print("MAIN")
 
-	# prob1 = Calculator()
+	prob1 = Calculator()
 	# # Solve(prob1, "Problema 1", graph_search, "Graph Search", [])
 	# Solve(prob1, "Problema 1", breadth_first_search, "Breath first search", None)
-	# Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
-	# Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy (h1)", prob1.h1)
+	Solve(prob1, "Problema 1", uniform_cost_search, "Uniform", None)
+	Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy (h1)", prob1.h1)
 	# Solve(prob1, "Problema 1", greedy_best_first_graph_search, "Greedy (h2)", prob1.h2)
 	# Solve(prob1, "Problema 1", astar_search, "A* (h1)", prob1.h1)
 	# Solve(prob1, "Problema 1", astar_search, "A* (h2)", prob1.h2)
@@ -127,7 +133,7 @@ def main():
 	# Solve(prob3, "Problema 3", astar_search, "A* (h1)", prob3.h1)
 	# Solve(prob3, "Problema 3", astar_search, "A* (h2)", prob3.h2)
 
-	prob4 = Calculator((3,7,0,0), (3,7,100,0))
+	prob4 = Calculator((0,0), (100,0), [3,7], ["+", "*"])
 	# Solve(prob4, "Problema 4", breadth_first_search, "Breath first search", None)
 	# Solve(prob3, "Problema 3", graph_search, "Graph Search", []) # 3, 14, 17 si funciona, 6 no
 	# Solve(prob4, "Problema 4", depth_limited_search, "Depth limited search", None)
