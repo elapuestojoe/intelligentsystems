@@ -253,20 +253,20 @@ while not b1.terminal_test(None):
 
 
     # Random player para pruebas
-    # print("-------------------------")
-    # b1.result(b1,random_player(b1, b1.states[-1]))
-    # b1.display()
-    # print("-------------------------")
-    # b1.result(b1,random_player(b1, b1.states[-1]))
-    # b1.display()
-
-    # Alpha vs random
     print("-------------------------")
-    b1.result(b1,alphabeta_player(b1, b1.states[-1]))
+    b1.result(b1,random_player(b1, b1.states[-1]))
     b1.display()
     print("-------------------------")
     b1.result(b1,random_player(b1, b1.states[-1]))
     b1.display()
+
+    # Alpha vs random
+    # print("-------------------------")
+    # b1.result(b1,alphabeta_player(b1, b1.states[-1]))
+    # b1.display()
+    # print("-------------------------")
+    # b1.result(b1,random_player(b1, b1.states[-1]))
+    # b1.display()
 
 print("WIN-------------------------")
 b1.initial.board.display()
