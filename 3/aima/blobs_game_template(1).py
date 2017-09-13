@@ -54,7 +54,9 @@ class BlobsBoard(object):
 
         # para casos especiales (en random a veces un movimiento permite varias reducciones)
 
+        
         while(bottom or top or left or right):
+            
             for x in range(self.left_border + 1, self.right_border):
 
                 b = self.bottom_border + 1
@@ -83,6 +85,9 @@ class BlobsBoard(object):
                 self.left_border+=1
             if(right):
                 self.right_border-=1
+
+            if(len(self.red_blobs) == 0 or len(self.green_blobs) == 0):
+                break
     
     def move(self, color, direction):
         "moves all the blobs of a color in a direction"
@@ -157,21 +162,23 @@ class Blobs(Game):
 
     def result(self, move):
         "returns the result of applying a move to a state"
-        state = self.states[-1]
-        to_move = state.to_move
 
-        if(to_move == "R"):
-            to_move = "G"
-        else:
-            to_move = "R"
+        if(not self.terminal_test()):
+            state = self.states[-1]
+            to_move = state.to_move
 
-        newBoard = state.board.move(to_move, move)
-        self.states.append(GameState(to_move=to_move,
-                        utility = self.utility(newBoard),
-                        board = newBoard,
-                        moves = self.actions(newBoard)))
+            if(to_move == "R"):
+                to_move = "G"
+            else:
+                to_move = "R"
 
-    def utility(self, state): 
+            newBoard = state.board.move(to_move, move)
+            self.states.append(GameState(to_move=to_move,
+                            utility = self.utility(newBoard, to_move),
+                            board = newBoard,
+                            moves = self.actions(newBoard)))
+
+    def utility(self, state, player): 
         "Return the value to player; 1 for win, -1 for loss, 0 otherwise."
         if(state.red_blobs == 0):
             if(player == "R"):
@@ -194,13 +201,13 @@ class Blobs(Game):
             return True
 
         # NOT SURE IF THIS IS NEEDED SALU2 A TO2
-        emptySpaces = False
-        for x in range(board.left_border, board.right_border):
-            for y in range(board.bottom_border, board.top_border):
-                space = (x,y)
-                if(space not in board.red_blobs and space not in board.green_blobs):
-                    emptySpaces = True
-        return not emptySpaces
+        # emptySpaces = False
+        # for x in range(board.left_border, board.right_border):
+        #     for y in range(board.bottom_border, board.top_border):
+        #         space = (x,y)
+        #         if(space not in board.red_blobs and space not in board.green_blobs):
+        #             emptySpaces = True
+        # return not emptySpaces
 
     def display(self):
         "Displays the current state"
@@ -248,6 +255,14 @@ while not b1.terminal_test():
     print("-------------------------")
     b1.result(random_player(b1, b1.states[-1]))
     b1.display()
+
+    # Alpha vs random
+    # print("-------------------------")
+    # b1.result(alphabeta_player(b1, b1.states[-1]))
+    # b1.display()
+    # print("-------------------------")
+    # b1.result(random_player(b1, b1.states[-1]))
+    # b1.display()
 
 print("WIN-------------------------")
 b1.initial.board.display()
