@@ -327,6 +327,26 @@ for unit in map(set, _ROWSM + _COLSM):
 	for v in unit:
 		_NEIGHBORSM[v].update(unit - {v})
 
+for x in _ROWSM:
+	for y in x:
+		if x.index(y) > 0 and x.index(y) < len(x) - 1:
+			_NEIGHBORSM[y].add(y - 1)
+			_NEIGHBORSM[y].add(y + 1)
+		elif x.index(y) == 0:
+			_NEIGHBORSM[y].add(y + 1)
+		else:
+			_NEIGHBORSM[y].add(y - 1)
+
+for x in _COLSM:
+	for y in x:
+		if x.index(y) > 0 and x.index(y) < len(x) - 1:
+			_NEIGHBORSM[y].add(y - _TOTAL)
+			_NEIGHBORSM[y].add(y + _TOTAL)
+		elif x.index(y) == 0:
+			_NEIGHBORSM[y].add(y + _TOTAL)
+		else:
+			_NEIGHBORSM[y].add(y - _TOTAL)
+
 _NEIGHBORS_H = {v: set() for v in flatten(_ROWSM)}
 for unit in map(set, _ROWSM):
 	for v in unit:
@@ -343,67 +363,94 @@ col3 = [2,7,12,17,22]
 col4 = [3,8,13,18,23]
 col5 = [4,9,14,19,24]
 
+columns = [col1,col2,col3,col4,col5]
+
 row1 = [0,1,2,3,4]
 row2 = [5,6,7,8,9]
 row3 = [10,11,12,13,14]
 row4 = [15,16,17,18,19]
 row5 = [20,21,22,23,24]
 
-cols = [col1,col2,col3,col4,col5]
-rows = [row1,row2,row3,row4,row5]
+
+def getAssignmentColumn(assignment, start, end, increase):
+	temp = {}
+
+	while(start in assignment and start <= end):
+		temp[start] = assignment[start]
+		start+=increase
+	return temp
+
+def countOcurrences(dictionary, letter):
+	occurrences = 0
+	for key in dictionary:
+		if dictionary[key] == letter:
+			occurrences +=1
+	return occurrences
+
+def get_h_neighbors(dictionary,letter):
+	v = False
+	for key in dictionary:
+		if(key not in col5 and dictionary[key]==letter and dictionary[key+1]==letter):
+			v = True
+	return v
+
+def check_order(dictionary, order):
+	i = 0
+	errors = 0
+	for key in dictionary:
+		if(dictionary[key]!= order[i]):
+			errors+=1
+		i+=1
+	return errors * 2
+
+
+def get_v_neighbors(dictionary,letter):
+	v = False
+	for key in dictionary:
+		if(key not in row5 and dictionary[key]==letter and dictionary[key+5]==letter):
+			v = True
+	return v
 
 class PicAPix(CSP):
+	R3 = _LIST
+	Cell = _ITER
+	bgrid = _MATRIX
+	rows = _ROWSM
+	cols = _COLSM
 	neighbors = _NEIGHBORSM
 	domains = {}
 	current = {}
-	columnConstraints = [[],[],[],[],[]]
-	rowConstraints = [[],[],[],[],[]]
+	# columnConstraints = [["R"],[],[],[],[]]
+	# rowConstraints = [["R"],[],[],[],[]]
 
-	solutions = {}
+	# Prob2
+	columnConstraints = [["R","R"],["Y", "R", "G"],["R","R","R","R"],
+						["R","G","R","R"],["R","R"]]
+	rowConstraints = [["R","R"],["Y","R","G"],["R","R","R","R"],
+						["R","G","R","R"],["R","R"]]
+	# -----------------------------
+	# Prob3
+	# columnConstraints = [["Y","Y"],["G","R"],["R","R","R","R","Y"],["R","G","R","R"],["R","R","Y"]]
+	# rowConstraints = [["Y","R","R"],["G","R","G","R"],["R","R","R","R"],["Y","R","R"],["Y","Y"]]
+	# ----------------------------
 
-	def updateConstraints(self):
-		# Problema 2
-		# colConstraints = ["RR","YRG","RR-RR","RGR-R","RR"]
-		# rowConstraints = ["RR","YRG","RR-RR","RGR-R","RR"]
+	# columnConstraints = [[],["Y"],[],
+	# 					[],[]]
+	# rowConstraints = [[],["Y"],[],
+	# 					[],[]]
 
-		# Problema 3
-		colConstraints = ["YY","GR","RRRRY","RGRR","RRY"]
-		rowConstraints = ["YRR","GRGR","RRRR","YRR","Y-Y"]
+	# columnConstraints = [[],["Y","G"],[],
+	# 					["G"],[]]
+	# rowConstraints = [[],["Y","G"],[],
+	# 					["G"],[]]
 
-		for i in range(len(colConstraints)):
-			s = colConstraints[i]
-			if(len(s)==5):
-				for j in range(len(s)):
-					char =s[j]
-					solution = char
-					if(char=="-"):
-						solution = "."
-					self.solutions[cols[i][j]] = solution
-			for char in s:
-				if(char != "-"):
-					self.columnConstraints[i].append(char)
+	for columnConstraint in columnConstraints:
+		sumConstraints = len(columnConstraint)
+		columnConstraint += ["."]* (5 - sumConstraints)
 
-			print(self.columnConstraints[0])
-		for i in range(len(rowConstraints)):
-			s = rowConstraints[i]
-			if(len(s)==5):
-				for j in range(len(s)):
-					char =s[j]
-					solution = char
-					if(char=="-"):
-						solution = "."
-					self.solutions[rows[i][j]] = solution
-			for char in s:
-				if(char != "-"):
-					self.rowConstraints[i].append(char)
-
-		for columnConstraint in self.columnConstraints:
-			sumConstraints = len(columnConstraint)
-			columnConstraint += ["."]* (5 - sumConstraints)
-
-		for rowConstraint in self.rowConstraints:
-			sumConstraints = len(rowConstraint)
-			rowConstraint += ["."]* (5 - sumConstraints)
+	for rowConstraint in rowConstraints:
+		sumConstraints = len(rowConstraint)
+		rowConstraint += ["."]* (5 - sumConstraints)
 
 	def __init__(self):
 		for var in range(0,25):
@@ -411,26 +458,22 @@ class PicAPix(CSP):
 			self.neighbors_v = _NEIGHBORS_V
 			self.neighbors_h = _NEIGHBORS_H
 			self.nassigns = 0
+		# print(self.domains)
 		self.curr_domains = self.domains
-		
-		CSP.__init__(self, None, self.domains, self.neighbors, None)
-
-		self.updateConstraints()
-
-		for key in self.solutions:
-			self.assign(key,self.solutions[key],self.current)
 		self.update_domains()
-		print("DOMAINS",self.domains)
-		print("CURR",self.current)
-
-		print(self.columnConstraints)
-		print(self.rowConstraints)
+		CSP.__init__(self, None, self.domains, self.neighbors, None)
 	def display(self, assignment):
 		for row in self.bgrid:
 			print(' '.join(map(str, row)))
 
 	def update_domains(self):
-
+		# Caso 1:
+		#           V1, V1, [V2,R1], [R1,A1,R1], [R1]
+		# R1
+		# R1,A1,R1
+		# R1
+		# V1,V1
+		# V2
 		columnConstraints = self.columnConstraints
 		rowConstraints = self.rowConstraints
 
@@ -438,7 +481,7 @@ class PicAPix(CSP):
 		for x in range(len(self.domains)):
 
 			if(x in self.current):
-				self.domains[x] = [self.current[x]]
+				self.domains[x] = []
 				# x=1
 			else:
 				var = x
@@ -483,9 +526,94 @@ class PicAPix(CSP):
 				self.domains[x] = domain
 
 		# Remove edges
+		# for i in col2:
+		# 	if()
 
-		for x in range(len(self.domains)):
-			var = x
+		# Fine tuning:
+		for i in self.domains:
+			domain = self.domains[i]
+
+			for value in domain:
+				unique=True
+				for neighbor in self.neighbors:
+					if(value in self.domains[neighbor] and i!=neighbor):
+						unique = False
+
+				if(unique):
+					self.domains[i] = [value]
+
+		
+		# for neighbor in self.neighbors[8]:
+		# 	print(neighbor)
+		# 	print(self.domains[neighbor])
+		# HardcodedConstraints:
+		# self.domains[8] = ["G"]
+		# self.domains[16] = ["G"]
+		# self.domains[12] = ["."]
+		# self.domains[18] = ["."]
+		# 2
+		# self.domains[2] = ["R"]
+		# self.domains[7] = ["R"]
+		# self.domains[17] = ["R"]
+		# self.domains[22] = ["R"]
+		# self.domains[10] = ["R"]
+		# self.domains[11] = ["R"]
+		# self.domains[13] = ["R"]
+		# self.domains[14] = ["R"]
+		print(rowConstraints)
+		print(columnConstraints)
+		print(self.domains)
+	def assign(self, var, val, assignment):
+		"Assign var, and keep track of conflicts."
+		# print("ASSIGN")
+		# print(self.domains)
+		self.nassigns +=1
+		oldval = assignment.get(var, None)
+
+		# indexCol = 0
+		# if(var in col1):
+		# 	indexCol = 0
+		# elif(var in col2):
+		# 	indexCol = 1
+		# elif(var in col3):
+		# 	indexCol = 2
+		# elif(var in col4):
+		# 	indexCol = 3
+		# elif(var in col5):
+		# 	indexCol = 4
+
+		# indexRow = 0
+		# if(var in row1):
+		# 	indexRow = 0
+		# elif(var in row2):
+		# 	indexRow = 1
+		# elif(var in row3):
+		# 	indexRow = 2
+		# elif(var in row4):
+		# 	indexRow = 3
+		# elif(var in row5):
+		# 	indexRow = 4
+
+		# if(val in self.columnConstraints[indexCol] and val in self.rowConstraints[indexRow]):
+		# 	self.columnConstraints[indexCol].remove(val)
+		# 	self.rowConstraints[indexRow].remove(val)
+
+		# 	if val != oldval:
+		# 		if oldval is not None:
+		# 			self.columnConstraints[indexCol].append(oldval)
+		# 			self.rowConstraints[indexRow].append(oldval)
+		# 	# CSP.assign(self, var, val, assignment)
+		CSP.assign(self, var, val, assignment)
+		# self.update_domains()
+
+	def unassign(self, var, assignment):
+		"""Remove {var: val} from assignment.
+		DO NOT call this if you are changing a variable to a new value;
+		just call assign for that."""
+		if var in assignment:
+
+			oldval = assignment.get(var, None)
+
 			indexCol = 0
 			if(var in col1):
 				indexCol = 0
@@ -509,12 +637,139 @@ class PicAPix(CSP):
 				indexRow = 3
 			elif(var in row5):
 				indexRow = 4
-			if("R" in self.domains[var] and rowConstraints[indexRow].index("R")>indexCol):
-				self.domains[var].remove("R")
-			if("G" in self.domains[var] and rowConstraints[indexRow].index("G")>indexCol):
-				self.domains[var].remove("G")
-			if("Y" in self.domains[var] and rowConstraints[indexRow].index("Y")>indexCol):
-				self.domains[var].remove("Y")
+
+			self.columnConstraints[indexCol].append(oldval)
+			self.rowConstraints[indexRow].append(oldval)
+			del assignment[var]
+			# print(assignment)
+			self.update_domains()
+			
+
+
+	def nconflicts(self, var, val, assignment):
+		"Return the number of conflicts var=val has with other variables."
+		conflicts = 0
+		# # print(self.domains)
+		# for i in range(len(self.domains)):
+		# 	if len(self.domains[i])==0:
+		# 		conflicts+=1
+
+		r = 0
+		d = 0
+		y = 0
+		g = 0
+		if var in col1:
+			for c in col1:
+
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+
+			# conflicts += abs(d - 3)
+			conflicts += abs(r - 2)
+		elif var in col2:
+			for c in col2:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+					# elif(assignment[c] == "G"):
+					# 	g+=1
+					# elif(assignment[c] == "Y"):
+					# 	y+=1
+			conflicts += abs(r-1)
+			# conflicts += abs(d-2)
+			# conflicts += abs(g-1)
+			# conflicts += abs(y-1)
+		elif var in col3:
+			for c in col3:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1			
+
+			conflicts += abs(r - 4)
+			# conflicts += abs(d - 1)
+		elif var in col4:
+			for c in col4:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1			
+
+			conflicts += abs(r - 3)
+			# conflicts += abs(d - 1)
+		elif var in col5:
+			for c in col5:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1			
+
+			conflicts += abs(r - 2)
+			# conflicts += abs(d - 3)
+
+		r = 0
+		d = 0
+		if(var in row1):
+			for c in row1:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+			conflicts += abs(r - 2)
+			# conflicts += abs(d - 3)
+		elif(var in row2):
+			for c in row2:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+			conflicts += abs(r - 1)
+			# conflicts += abs(d - 2)
+
+		elif(var in row3):
+			for c in row3:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+			conflicts += abs(r - 4)
+			# conflicts += abs(d - 1)
+
+		elif(var in row4):
+			for c in row4:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+			conflicts += abs(r - 3)
+			# conflicts += abs(d - 1)
+
+		elif(var in row5):
+			for c in row3:
+				if(c in assignment):
+					if(assignment[c] == "R"):
+						r+=1
+					# elif(assignment[c] == "."):
+					# 	d+=1
+			conflicts += abs(r - 2)
+			# conflicts += abs(d - 3)
+
+
+
+		return conflicts
+
 
 	def actions(self, state):
 		"""Return a list of applicable actions: nonconflicting
@@ -525,6 +780,47 @@ class PicAPix(CSP):
 			assignment = dict(state)
 			var = first([v for v in self.variables if v not in assignment])
 			return [(var, val) for val in self.domains[var]]
+
+# s = PicAPix()
+
+# print("DOMAINS", s.domains)
+# s.assign(0,".",s.current)
+# print(s.current)
+# s.assign(1,".",s.current)
+# print(s.current)
+
+def display(s):
+	print(s.domains)
+	print(s.rowConstraints)
+	print(s.columnConstraints)
+	print(s.actions(s.current))
+	print("CURRENT",s.current)
+def solvePix(s):
+	arr = [0]*25
+	curr = 0
+	# s.assign(0,"R",s.current)
+	# s.assign(5,"R",s.current)
+
+	# display(s)
+	# print(s.domains)
+
+	# s.unassign(5,s.current)
+	# print("DOM",s.domains)
+	while(curr < 25):
+		# print(curr)
+		d = s.domains[curr]
+		if(len(d)>0):
+			s.assign(curr, d[arr[curr]], s.current)
+			curr+=1
+		else:
+			print("ELSE")
+			curr -=1
+			s.unassign(curr,s.current)
+			arr[curr]+=1
+		# arr[0]+=1
+
+cols = [col1,col2,col3,col4,col5]
+rows = [row1,row2,row3,row4,row5]
 
 def checkCol(number, prob, check=False):
 
@@ -585,11 +881,11 @@ def increaseCurr(curr, position, domains):
 	if(curr[position] < len(domains[position])-1):
 		curr[position]+=1
 	else:
-		curr[position] = 0
+		for i in range(position,25):
+			curr[i] = 0
 		increaseCurr(curr, position-1, domains)
 
 def solve(pix):
-	# Solve by simple backtracking
 	for var in pix.variables:
 		pix.assign(var, pix.domains[var][0], pix.current)
 
@@ -605,12 +901,16 @@ def solve(pix):
 			if(steps%100000 == 0):
 				print(curr)
 			s = 24
+
 			increaseCurr(curr,s,pix.domains)
+
 			for i in range(len(curr)):
+				# print(i)
+				# print(curr[i])
+				# print(pix.domains[i])
 				pix.assign(i, pix.domains[i][curr[i]], pix.current)
 
 		steps+=1
 pix = PicAPix()
-print(pix.domains)
 solve(pix)
 	
