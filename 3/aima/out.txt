@@ -1,0 +1,87 @@
+GAME
+INITIAL
+to_move R
+R . R R R . 
+G . G G . . 
+R . G R . R 
+G . R R G G 
+. . R G G G 
+. G . R R G 
+------------
+to_move R
+R . R R R . 
+G . G G . . 
+R . G R . R 
+G . R R G G 
+. . R G G G 
+. G . R R G 
+to_move G
+G . G G R . 
+. . G . . . 
+G . . R G G 
+. . R G G G 
+. G R . . G 
+. . . R R . 
+to_move R
+G . G R . . 
+. . G . . . 
+G . R . G G 
+. R . G G G 
+. R . . . G 
+. . R R . . 
+to_move G
+. . . R . . 
+G . G . . . 
+. . G . . . 
+G R . . G G 
+. R . G G G 
+. . R R . G 
+to_move R
+. . R . . . 
+G . G . . . 
+. . G . . . 
+R . . . G G 
+R . . G G G 
+. R R . . G 
+to_move G
+. . R . . o 
+. G . . . o 
+. G . . . o 
+R . . G G o 
+R . G G G o 
+. R R . G o 
+to_move R
+. R . . . o 
+. G . . . o 
+. G . . . o 
+. . . G G o 
+. . G G G o 
+R R . . G o 
+to_move G
+. R . . . o 
+. . G . . o 
+. . G . . o 
+. . . . G o 
+. . . G G o 
+R R . . . o 
+to_move R
+R . . . . o 
+. . G . . o 
+. . G . . o 
+. . . . G o 
+. . . G G o 
+R . . . . o 
+to_move G
+R . . . . o 
+. . . G . o 
+. . . G . o 
+. . . . . o 
+. . . . G o 
+R . . . . o 
+to_move R
+o o o o o o 
+o o o G . o 
+o o o G . o 
+o o o . . o 
+o o o . G o 
+o o o o o o 

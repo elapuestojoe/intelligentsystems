@@ -71,6 +71,8 @@ argmax = max
 def argmin_random_tie(seq, key=identity):
     """Return a minimum element of seq; break ties at random."""
     return argmin(shuffled(seq), key=key)
+    # print(seq)
+    # return argmin(seq[-1], key=key)
 
 
 def argmax_random_tie(seq, key=identity):
