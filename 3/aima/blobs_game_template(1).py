@@ -191,8 +191,8 @@ class Blobs(Game):
             return (len(state.board.red_blobs) - len(state.board.green_blobs))
 
     def EVAL_FN2(self, state):
-        if(state.utility < 0):
-            return state.utility
+        # if(state.utility < 0):
+        #     return state.utility
         up = 0
         down = 0
         left = 0
@@ -224,7 +224,7 @@ class Blobs(Game):
             return -adjacent
 
     def EVAL_FN1(self, state):
-        print("USELESS")
+        # print("USELESS")
         return 0
 
 
@@ -299,5 +299,6 @@ print("------------")
 # play_game(b4, AlphaBeta2, random_player)
 # play_game(b4, alphabeta_player, AlphaBeta2)
 # play_game(b4, AlphaBeta2, alphabeta_player)
-play_game(b4, AlphaBeta3, AlphaBeta2)
-# play_game(b4,AlphaBeta2, AlphaBeta3)
+# play_game(b4, AlphaBeta3, AlphaBeta2)
+# play_game(b4, AlphaBeta3, AlphaBetaImprovedPlayer)
+play_game(b4,AlphaBeta2, AlphaBeta3)
