@@ -218,7 +218,6 @@ class Blobs(Game):
 
         # maxAdjacent = max(up,down,left,right)
         # minAdjacent = min(up,down,left,right)
-        print("ADJACENT", adjacent)
         if(state.to_move == "R"):
             return adjacent
         else:
@@ -227,92 +226,6 @@ class Blobs(Game):
     def EVAL_FN1(self, state):
         print("USELESS")
         return 0
-        # Tercer intento:
-        # if(len(state.board.green_blobs) == 0):
-        #     if(state.to_move == "R"):
-        #         return 1000
-        #     else:
-        #         return -1000
-        # if(len(state.board.red_blobs) == 0):
-        #     if(state.to_move == "G"):
-        #         return 1000
-        #     else:
-        #         return -1000
-        
-        # diff = len(state.board.green_blobs) - len(state.board.red_blobs)
-        # if(state.to_move == "G"):
-        #     return diff
-        # else:
-        #     return -diff
-
-        # CUARTO INTENTO
-        # player = state.to_move
-        # pieces = 0
-        # opponentPieces = 0
-
-        # pieces = len(state.board.red_blobs)
-        # opponentPieces = len(state.board.green_blobs)
-
-        # if(pieces == 0): return -1
-        # if(opponentPieces == 0): return 1
-        # xSum = 0
-        # ySum = 0
-        # for piece in state.board.red_blobs:
-        #     xSum += piece[0]
-        #     ySum += piece[1]
-
-        # xSum /= pieces
-        # ySum /= pieces
-
-        # xSum2 = 0
-        # ySum2 = 0
-        # for piece in state.board.green_blobs:
-        #     xSum2 +=piece[0]
-        #     ySum2 +=piece[1]
-
-        # xSum2 /= opponentPieces
-        # ySum2 /= opponentPieces
-
-        # if(xSum - xSum2 == 0 or ySum - ySum2 == 0): return 0
-        # avgX = xSum / abs(xSum - xSum2)
-        # avgY = ySum / abs(ySum - ySum2)
-
-
-        # if(player == "R"):
-        #     return (avgX + avgY) / 2
-        # else:
-        #     return -10
-
-        # if(player == "G"):
-        #     pieces = len(state.board.green_blobs)
-        #     opponentPieces = len(state.board.red_blobs)
-
-        #     if(pieces == 0): return -1
-        #     if(opponentPieces == 0): return 1
-        #     xSum = 0
-        #     ySum = 0
-        #     for piece in state.board.green_blobs:
-        #         xSum += piece[0]
-        #         ySum += piece[1]
-
-        #     xSum /= pieces
-        #     ySum /= pieces
-
-        #     xSum2 = 0
-        #     ySum2 = 0
-        #     for piece in state.board.red_blobs:
-        #         xSum2 +=piece[0]
-        #         ySum2 +=piece[1]
-
-        #     xSum2 /= opponentPieces
-        #     ySum2 /= opponentPieces
-
-        #     if(xSum - xSum2 == 0 or ySum - ySum2 == 0): return 0
-
-        #     avgX = xSum / abs(xSum - xSum2)
-        #     avgY = ySum / abs(ySum - ySum2)
-
-        #     return (avgX + avgY) / 2
 
 
 
@@ -386,5 +299,5 @@ print("------------")
 # play_game(b4, AlphaBeta2, random_player)
 # play_game(b4, alphabeta_player, AlphaBeta2)
 # play_game(b4, AlphaBeta2, alphabeta_player)
-# play_game(b4, AlphaBeta3, AlphaBeta2)
-play_game(b4,AlphaBeta2, AlphaBeta3)
+play_game(b4, AlphaBeta3, AlphaBeta2)
+# play_game(b4,AlphaBeta2, AlphaBeta3)

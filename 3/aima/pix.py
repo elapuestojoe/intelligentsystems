@@ -105,5 +105,4 @@ class Pix(CSP):
 			return abs(greenS0 - green0)
 pix = Pix()
 pix.display()
-print(pix.nconflicts(pix.board[0][0], pixConfiguration(1,"Red"), None))
 # def __init__(self, variables, domains, neighbors, constraints):
