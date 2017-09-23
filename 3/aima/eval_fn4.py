@@ -22,6 +22,6 @@ def eval_fn4(state):
             adjacent+=1
         if((x,y-1) in e):
             adjacent+=1
-    return adjacent + len(s)
+    return adjacent + len(s) - len(e)
 def player4(game,state):
 	return alphabeta_search(state, game, eval_fn = eval_fn4)
