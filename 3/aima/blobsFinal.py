@@ -4,6 +4,8 @@ from games import (GameState, Game, query_player, random_player,
                     alphabeta_player,
                     alphabeta_full_search, alphabeta_search, TicTacToe)
 
+from eval_fn4 import *
+
 #_______________________________________________________________________________
 # Auxiliary functions
 
@@ -54,7 +56,7 @@ class BlobsBoard(object):
         left = True
         right = True
 
-        # para casos especiales (en random a veces un movimiento permite varias reducciones)
+        # Recursively update borders (in some cases we have to prune more than 1 col/row)
         while(bottom or top or left or right):
             
             for x in range(self.left_border + 1, self.right_border):
@@ -84,9 +86,6 @@ class BlobsBoard(object):
             if(right):
                 self.right_border-=1
 
-            # if(len(self.red_blobs) == 0 or len(self.green_blobs) == 0):
-            #     break
-    
     def move(self, color, direction):
         "moves all the blobs of a color in a direction"
         # move blobs of the specified color eliminating those that fall out of the board
@@ -146,15 +145,22 @@ class Blobs(Game):
     moves = None
     def __init__(self):
         self.initial = GameState(to_move='R', utility=0,
-                                 board=BlobsBoard(), moves=['L','D','R','U'])
+                                 board=BlobsBoard(), moves=['L','R','U','D'])
         self.currentState = self.initial
         self.moves = self.initial.moves
 
     def actions(self, state):
         "Legal moves are always all the four original directions."
         return state.moves
+
+        # This could potentially be enabled to break current moves' hierarchy, 
+        # By doing this, picking a move where 2 or more moves have the same
+        # best value would be random instead of being determined by the order of the original moves (LRUD)
+        # This makes games a bit more interesting :)
+
         # random.shuffle(self.moves)
         # return self.moves
+
 
     def result(self, state, move):
         "returns the result of applying a move to a state"
@@ -181,65 +187,23 @@ class Blobs(Game):
     def utility(self, state, player): 
         "Return the value to player; 1 for win, -1 for loss, 0 otherwise."
         return state.utility #if player == "R" else -state.utility
-
-    def EVAL_FN3(self,state):
-        if(state.to_move == "G"):
-            # return len(state.board.red_blobs)
-            return (len(state.board.green_blobs) - len(state.board.red_blobs))
-        else:
-            # return len(state.board.green_blobs)
-            return (len(state.board.red_blobs) - len(state.board.green_blobs))
-
-    def EVAL_FN2(self, state):
-        # if(state.utility < 0):
-        #     return state.utility
-        up = 0
-        down = 0
-        left = 0
-        right = 0
-
-        adjacent = 0
-        for position in state.board.red_blobs:
-            x = position[0]
-            y = position[1]
-
-            if((x+1,y) in state.board.green_blobs):
-                right+=1
-                adjacent+=1
-            if((x-1,y) in state.board.green_blobs):
-                left+=1
-                adjacent+=1
-            if((x,y+1) in state.board.green_blobs):
-                up+=1
-                adjacent+=1
-            if((x,y-1) in state.board.green_blobs):
-                down+=1
-                adjacent+=1
-
-        # maxAdjacent = max(up,down,left,right)
-        # minAdjacent = min(up,down,left,right)
-        if(state.to_move == "R"):
-            return adjacent
-        else:
-            return -adjacent
-
+        
     def EVAL_FN1(self, state):
-        # print("USELESS")
+        # Useless eval function used for debugging
         return 0
 
-
+    def EVAL_FN3(self,state):
+        # Debugging and tests
+        if(state.to_move == "G"):
+            return (len(state.board.green_blobs) - len(state.board.red_blobs))
+        else:
+            return (len(state.board.red_blobs) - len(state.board.green_blobs))
 
     def terminal_test(self, state):
         "A state is terminal if it is won or there are no empty squares."
-
-        # print("GREEN", len(state.board.green_blobs))
-        # print("REED", len(state.board.red_blobs))
         f= state.utility != 0 or len(state.board.green_blobs) == 0 or len(state.board.red_blobs) == 0 or \
             state.board.left_border >= state.board.right_border or state.board.bottom_border >= state.board.top_border
-
-        # print("F", f)
         return f
-        # return(self.compute_utility(state.board, None, "R") != 0)
 
 
     def display(self, state):
@@ -251,20 +215,11 @@ class Blobs(Game):
         return state.to_move
 
     def compute_utility(self, board, move, player):
-        v = 0
         if(len(board.green_blobs) == 0):
-            if(player == "R"):
-                v = 1
-            else:
-                v = -1
-
+            return 1
         if(len(board.red_blobs) == 0):
-            if(player == "G"):
-                v = 1
-            else:
-                v = -1
-        return v 
-
+            return -1
+        return 0
     def move(self, move):
         self.currentState = self.result(self.currentState, move)
 
@@ -295,25 +250,42 @@ def play_game(game, *players):
     print('=> Reach maximum number of plays')
     utility = game.utility(state, game.to_move(game.initial))
     if utility > 0:
+        print("TIE?")
         print('Red player wins!!')
     elif utility < 0:
+        print("TIE?")
         print('Green player wins!!')
     else:
         print('Tie: Nobody wins!!')
     return utility
+
+def display_move(player, direction):
+    "Display a player's move"
+    if player == 'R':
+        print('Red', end=' ')
+    else:
+        print('Green', end=' ')
+    print('Blobs player moves', end=' ')
+    if direction == 'U':
+        print('UP')
+    elif direction == 'D':
+        print('Down')
+    elif direction == 'L':
+        print('Left')
+    elif direction == 'R':
+        print('Right')
+    else:
+        print('Wrong')
 
 ## YOU ALSO NEED TO CREATE AN EVAL_FN AND A PLAYER FOR YOUR GAME THAT USE
 ## ALPHABETA_SEARCH INSTEAD OF ALPHABETA_FULL_SEARCH.
 ## YOU DO NOT NEED A CUTOFF_TEST BECAUSE I WILL USE DEPTHS FOR CUTTING THE
 ## LOOK-AHEAD SEARCH.
 
-# def alphabeta_search(state, game, d=4, cutoff_test=None, eval_fn=None):
 def AlphaBetaImprovedPlayer(game, state):
     # state.moves = random.shuffle(state.moves)
     return alphabeta_search(state, game, eval_fn = game.EVAL_FN1)
 
-def AlphaBeta2(game,state):
-    return alphabeta_search(state, game, eval_fn = game.EVAL_FN2)
 def AlphaBeta3(game,state):
     return alphabeta_search(state, game, eval_fn = game.EVAL_FN3)
 
@@ -322,16 +294,18 @@ b4 = Blobs()
 print("INITIAL")
 b4.display(b4.currentState)
 print("------------")
+
+# TESTS:
 # play_game(b4,alphabeta_player, alphabeta_player)
 # play_game(b4, AlphaBetaImprovedPlayer, random_player)
-# play_game(b4, alphabeta_player, alphabeta_player)
 # play_game(b4, random_player, alphabeta_player)
+# play_game(b4, random_player, player4)
 # play_game(b4, AlphaBetaImprovedPlayer, AlphaBetaImprovedPlayer)
 # play_game(b4, AlphaBetaImprovedPlayer, alphabeta_player)
 
-# play_game(b4, AlphaBeta2, random_player)
-# play_game(b4, alphabeta_player, AlphaBeta2)
-# play_game(b4, AlphaBeta2, alphabeta_player)
-# play_game(b4, AlphaBeta3, AlphaBeta2)
+# play_game(b4, player4, random_player)
+# play_game(b4, alphabeta_player, player4)
+# play_game(b4, player4, alphabeta_player)
+play_game(b4, AlphaBeta3, player4)
 # play_game(b4, AlphaBeta3, AlphaBetaImprovedPlayer)
-play_game(b4,AlphaBeta2, AlphaBeta3)
+# play_game(b4,player4, AlphaBeta3)

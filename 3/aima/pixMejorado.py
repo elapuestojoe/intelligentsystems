@@ -245,9 +245,6 @@ def mac(csp, var, value, assignment, removals):
 	"Maintain arc consistency."
 	return AC3(csp, [(X, var) for X in csp.neighbors[var]], removals)
 
-# The search, proper
-
-
 def backtracking_search(csp,
 						select_unassigned_variable=first_unassigned_variable,
 						order_domain_values=unordered_domain_values,
@@ -349,6 +346,8 @@ row3 = [10,11,12,13,14]
 row4 = [15,16,17,18,19]
 row5 = [20,21,22,23,24]
 
+
+# Having variables that hold rows/cols and all rows/cols makes some operations easier
 cols = [col1,col2,col3,col4,col5]
 rows = [row1,row2,row3,row4,row5]
 
@@ -356,19 +355,33 @@ class PicAPix(CSP):
 	neighbors = _NEIGHBORSM
 	domains = {}
 	current = {}
+
+	# Initialize constraints as empty
 	columnConstraints = [[],[],[],[],[]]
 	rowConstraints = [[],[],[],[],[]]
 
 	solutions = {}
 
 	def updateConstraints(self):
-		# Problema 2
+
+		# Here the constraints are inserted into the problem, our notation enables
+		# Multiple same letter constraints to be inserted in the string, in this way,
+		# YY represents a yellow block of value 2
+		# YY-Y represents a yellow block of value 2 followed by a yellow block of value 1
+		# YRG represents three blocks: Yelow, red, green of value 1
+		# We make use of this notation to prune domains more efficiently later.
+		
 		# colConstraints = ["RR","YRG","RR-RR","RGR-R","RR"]
 		# rowConstraints = ["RR","YRG","RR-RR","RGR-R","RR"]
 
-		# Problema 3
+		# Problem 3
 		colConstraints = ["YY","GR","RRRRY","RGRR","RRY"]
 		rowConstraints = ["YRR","GRGR","RRRR","YRR","Y-Y"]
+
+		# Process column constraints, if the cumulative value of a constraint is 5,
+		# then the column is already solved
+		# This can be improved later by validating if a constraint has more than 5 chars to 
+		# Quickly eliminate problems with invalid constraints.
 
 		for i in range(len(colConstraints)):
 			s = colConstraints[i]
@@ -383,7 +396,10 @@ class PicAPix(CSP):
 				if(char != "-"):
 					self.columnConstraints[i].append(char)
 
-			print(self.columnConstraints[0])
+		# Process row constraints, if the cumulative value of a constraint is 5,
+		# then the row is already solved
+		# This can be improved later by validating if a constraint has more than 5 chars to 
+		# Quickly eliminate problems with invalid constraints.
 		for i in range(len(rowConstraints)):
 			s = rowConstraints[i]
 			if(len(s)==5):
@@ -397,6 +413,9 @@ class PicAPix(CSP):
 				if(char != "-"):
 					self.rowConstraints[i].append(char)
 
+ 		# Finally, add corresponding dots of constraints that have less than 5 chars, in this way
+ 		# We can infer the spaces on a col/row, this is used later to prune domains and prove if a problem
+ 		# is solved.
 		for columnConstraint in self.columnConstraints:
 			sumConstraints = len(columnConstraint)
 			columnConstraint += ["."]* (5 - sumConstraints)
@@ -417,14 +436,20 @@ class PicAPix(CSP):
 
 		self.updateConstraints()
 
+		# If at updating constraints we infer a solved row/column, assign it to reduce domains later.
 		for key in self.solutions:
 			self.assign(key,self.solutions[key],self.current)
-		self.update_domains()
-		print("DOMAINS",self.domains)
-		print("CURR",self.current)
 
-		print(self.columnConstraints)
-		print(self.rowConstraints)
+		# At this point all domains are empty [], however, by updating domains we
+		# add domains to variables using the given constraints, this helps to reduce the search time
+		self.update_domains()
+
+		# Used for debugging
+		# print("DOMAINS",self.domains)
+		# print("CURR",self.current)
+
+		# print(self.columnConstraints)
+		# print(self.rowConstraints)
 	def display(self, assignment):
 		for row in self.bgrid:
 			print(' '.join(map(str, row)))
@@ -435,11 +460,13 @@ class PicAPix(CSP):
 		rowConstraints = self.rowConstraints
 
 		arrC = []
+
+		# We iterate through the constraints and add a domain to a specific cell 
+		# ONLY if the value is in both the corresponding column and row constraint 
 		for x in range(len(self.domains)):
 
 			if(x in self.current):
 				self.domains[x] = [self.current[x]]
-				# x=1
 			else:
 				var = x
 				indexCol = 0
@@ -482,8 +509,12 @@ class PicAPix(CSP):
 
 				self.domains[x] = domain
 
-		# Remove edges
-
+		# Remove edges:
+		# Since constraints contain information not only about the values a column/row have
+		# But also about the order, we prune edges, in this way, if a row has a constraint RG
+		# We ensure that G is pruned from the first column, because the row constraint specifies that
+		# Before a G there exists an R
+		# This helps a lot by reducing search time and consistency
 		for x in range(len(self.domains)):
 			var = x
 			indexCol = 0
@@ -527,7 +558,14 @@ class PicAPix(CSP):
 			return [(var, val) for val in self.domains[var]]
 
 def checkCol(number, prob, check=False):
+	# Check is a boolean to indicate if we are checking
+	# columns or row constraints
+	# if true check constraint, false check row
+	# prob is the current problem
+	# number is the number of the column or row constraint we are going to check
 
+	# This checks the difference between the count of values for RGY. for the current problem assignment
+	# and the constraint, if all values are equal to 0 then the col/row is solved
 	r = 0 
 	g = 0
 	y = 0
@@ -582,6 +620,7 @@ def isSolved(pix):
 	return solved
 
 def increaseCurr(curr, position, domains):
+	# Increases value of current domain configuration
 	if(curr[position] < len(domains[position])-1):
 		curr[position]+=1
 	else:
@@ -590,6 +629,7 @@ def increaseCurr(curr, position, domains):
 
 def solve(pix):
 	# Solve by simple backtracking
+	# This could be improved by recording previous successful row/col configurations and using them later
 	for var in pix.variables:
 		pix.assign(var, pix.domains[var][0], pix.current)
 
@@ -613,4 +653,3 @@ def solve(pix):
 pix = PicAPix()
 print(pix.domains)
 solve(pix)
-	
