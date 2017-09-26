@@ -452,6 +452,9 @@ class PicAPix(CSP):
                         current[i] = wrong[w]
                         current[w] = temp
                         wrong = calculateWrong(current, self.domains)
+            print(wrong)
+            print(self.domains)
+            print(current)
 
         buff = current.copy()
         print(current)
@@ -480,7 +483,7 @@ class PicAPix(CSP):
                         temp[var] = current[i]
                         temp[i] = current[var]
 
-                        if(self.nconflicts(var,temp[var], temp) + self.nconflicts(i,temp[var], temp) <= 
+                        if(self.nconflicts(var,temp[var], temp) + self.nconflicts(i,temp[var], temp) +1 <= 
                             self.nconflicts(var, current[var], current) + self.nconflicts(i, current[i], current)):
                                 current = temp
 
@@ -633,6 +636,32 @@ class PicAPix(CSP):
             if("G" not in constraints):
                 domains.remove("G")
         
+        self.domains[3] = "R"
+        self.domains[8] = "G"
+        self.domains[13] = "R"
+        self.domains[18] = "."
+        self.domains[23] = "R"
+
+
+        self.domains[2] = "R"
+        self.domains[7] = "G"
+        self.domains[12] = "R"
+        self.domains[17] = "."
+        self.domains[22] = "R"
+
+        self.domains[15] = "R"
+        self.domains[16] = "R"
+        self.domains[17] = "."
+        self.domains[18] = "R"
+        self.domains[19] = "R"
+
+        self.domains[15] = "R"
+        self.domains[16] = "G"
+        self.domains[17] = "R"
+        self.domains[18] = "."
+        self.domains[19] = "R"
+
+        print("SELF", self.domains)
 s = PicAPix()
 
 print("DOMAINS")

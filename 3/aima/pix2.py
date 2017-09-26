@@ -53,7 +53,9 @@ class PicAPix(CSP):
             print(' '.join(map(str, row)))
     
     def pic_a_pix_constraint(A, a, B, b, recurse=0):
-    	pri
+
+    	# Primer constraint G en columna 1
+    	if(A==B): return True
         
 
 s = PicAPix(easy1)
