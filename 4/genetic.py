@@ -1,9 +1,6 @@
 import math
 import random
 
-import time
-random.seed(time.time())
-
 def estimate(x, arrA):
 	return ( (arrA[0]/(x*x)) + (arrA[1]* math.pow(math.e,(arrA[2]/x))) + arrA[3]*math.sin(x))
 
