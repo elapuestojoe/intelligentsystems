@@ -1,6 +1,7 @@
 import math
 import random
 
+LIMIT = 30
 def estimate(x, arrA):
 	return ( (arrA[0]/(x*x)) + (arrA[1]* math.pow(math.e,(arrA[2]/x))) + arrA[3]*math.sin(x))
 
@@ -13,16 +14,18 @@ def getA(binString):
 
 	return [a0,a1,a2,a3]
 
-# First Population
-population = []
+def initializeRandomPopulation()
+	population = []
+	for i in range(10):
+		string = bin(random.getrandbits(16))
+		# Cut string
+		string = string[2::]
+		while(len(string)<16):
+			string="0"+string
+		population.append(string)
+	return population
 
-for i in range(10):
-	string = bin(random.getrandbits(16))
-	# Cut string
-	string = string[2::]
-	while(len(string)<16):
-		string="0"+string
-	population.append(string)
+population = initializeRandomPopulation()
 
 # Solutions
 x = [2,4,6,8,10,12,14,16,18,20]
@@ -43,7 +46,7 @@ def iterate(population):
 	results = []
 	for i in range(len(temp)):
 		# Normalizar
-		results.append([population[i],temp[i]/total])
+		results.append([population[i],1-(temp[i]/total)])
 
 	# Ordenar
 	results = sorted(results, key=lambda x: x[1])
@@ -57,12 +60,12 @@ def iterate(population):
 
 	# Breeding:
 
-	def getRandomParent(population):
+	def getRandomParents(population):
 		prob = random.random()
 		i = 0
-		while(prob > results[i][1]):
+		while(results[i][1] < prob and i < len(results) -1):
 			i+=1
-		return results[i][0]
+		return results[i][0], results[i+1][0]
 
 	newPopulation = []
 
@@ -75,27 +78,29 @@ def iterate(population):
 					i=0
 
 	for i in range(len(population)):
-		parent1 = getRandomParent(population)
-		parent2 = getRandomParent(population)
+		parent1, parent2 = getRandomParents(population)
 
-		child = parent1[0:8]
-		child +=parent2[8:16]
+		crossover = random.randint(1,14)
+		child = parent1[0:crossover]
+		child +=parent2[crossover:16]
 
 		mutate(child)
 
 		newPopulation.append(child)
 
-	if(minError > 50):
-		population = newPopulation
+	population = newPopulation
+	# if(minError > LIMIT):
+	# 	population = newPopulation
 
+	# print(newPopulation[0])
 	return minError
 
 # Repetir 10000 veces
-steps = 100000
+steps = 10000
 while (steps > 0):
 	error = iterate(population)
 	steps -=1
-	if(error <= 50):
+	if(error <= LIMIT):
 		break
 
 temp = [0]*10
