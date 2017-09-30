@@ -1,7 +1,10 @@
 import math
 import random
 
-LIMIT = 30
+LIMIT = 10
+POPULATIONSIZE = 20
+MUTATIONPROB = 0.05
+ITERATIONS = 1000
 def estimate(x, arrA):
 	return ( (arrA[0]/(x*x)) + (arrA[1]* math.pow(math.e,(arrA[2]/x))) + arrA[3]*math.sin(x))
 
@@ -14,9 +17,9 @@ def getA(binString):
 
 	return [a0,a1,a2,a3]
 
-def initializeRandomPopulation()
+def initializeRandomPopulation():
 	population = []
-	for i in range(10):
+	for i in range(POPULATIONSIZE):
 		string = bin(random.getrandbits(16))
 		# Cut string
 		string = string[2::]
@@ -33,32 +36,25 @@ y = [26,-1,4,20,0,-2,19,1,-4,19]
 
 def iterate(population):
 	# temp
-	temp = [0]*10
+	temp = [0]*POPULATIONSIZE
 
 	for i in range(len(population)):
-		a = getA(population[i])
+		a = getA(population[i]) # Get A values of individual
 		for j in range(len(x)):
-			temp[i] += abs(y[j] - estimate(x[j], a))
+			temp[i] += abs(y[j] - estimate(x[j], a)) #Get error of estimation for each f(x) = y - f(a)
 
 	minError = min(temp)
 	total = sum(temp)
-	# Aquí tenemos errores
+	tempVal = 0
 	results = []
 	for i in range(len(temp)):
-		# Normalizar
-		results.append([population[i],1-(temp[i]/total)])
+		fitnessVal = 1 -(temp[i]/total)
+		results.append([population[i],fitnessVal + tempVal])
+		tempVal+=fitnessVal
 
-	# Ordenar
+
+	# Order by fitness value
 	results = sorted(results, key=lambda x: x[1])
-
-	temp = 0
-
-	# Acumular
-	for result in results:
-		temp += result[1]
-		result[1] = temp
-
-	# Breeding:
 
 	def getRandomParents(population):
 		prob = random.random()
@@ -71,7 +67,7 @@ def iterate(population):
 
 	def mutate(child):
 		for i in child:
-			if(random.random()>0.95):
+			if(random.random()<=MUTATIONPROB):
 				if i == "0":
 					i=1
 				else:
@@ -89,21 +85,18 @@ def iterate(population):
 		newPopulation.append(child)
 
 	population = newPopulation
-	# if(minError > LIMIT):
-	# 	population = newPopulation
-
-	# print(newPopulation[0])
 	return minError
 
-# Repetir 10000 veces
-steps = 10000
-while (steps > 0):
+# Repeat by ITERATIONS
+steps = 0
+while (steps < ITERATIONS):
 	error = iterate(population)
-	steps -=1
+	steps +=1
 	if(error <= LIMIT):
 		break
 
-temp = [0]*10
+# Get best solution of current population
+temp = [0]*POPULATIONSIZE
 
 for i in range(len(population)):
 	a = getA(population[i])
@@ -111,14 +104,15 @@ for i in range(len(population)):
 		temp[i] += abs(y[j] - estimate(x[j], a))
 
 total = sum(temp)
-# Aquí tenemos errores
 results = []
 for i in range(len(temp)):
-	# Normalizar
+
 	results.append([population[i],temp[i]/total])
 
-# Ordenar
+# Order solutions by fitness
 results = sorted(results, key=lambda x: x[1])
+
+
 print(results[0])
 a = getA(results[0][0])
 totalError=0
@@ -129,5 +123,6 @@ for i in range(len(x)):
 	print("PARTIAL ERROR:", abs(y[i] - estimate(x[i],a)))
 	totalError+= abs(y[i] - estimate(x[i],a))
 
-print("VALUES: ", a)
-print("TOTAL ERROR", totalError)
+print("Individual", results[0][0])
+print(a)
+print("E={0:.2f}".format(totalError))
