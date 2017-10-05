@@ -5,7 +5,7 @@ def f(x):
 
 minX = 0
 maxX = 25
-numParticles = maxX//3
+numParticles = 7
 
 class Particle():
 	pBest = None

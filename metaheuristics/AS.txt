@@ -1,0 +1,394 @@
+INITIAL ANTS
+['C']
+['A']
+['E']
+['C']
+['D']
+ANT: 0
+Iteration: 0
+Current route ['E']
+Permitted moves and cost: [['D', 4], ['C', 7], ['A', 21]]
+Total Cost of all permitted moves:  32
+Move D has a feromone trail value of 1
+Move D has a heuristic value of 4
+The total is 32
+1 * 4 / 32 = 0.125
+To normalize, we add the sum of previous values, so the move D gets assigned the value 0.125
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 7
+The total is 32
+1 * 7 / 32 = 0.21875
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.34375
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 21
+The total is 32
+1 * 21 / 32 = 0.65625
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['D', 0.125], ['C', 0.34375], ['A', 1.0]]
+Random number is 0.008486522599220891, so the selected move is D
+ANT: 1
+Iteration: 0
+Current route ['E']
+Permitted moves and cost: [['D', 4], ['C', 7], ['A', 21]]
+Total Cost of all permitted moves:  32
+Move D has a feromone trail value of 1
+Move D has a heuristic value of 4
+The total is 32
+1 * 4 / 32 = 0.125
+To normalize, we add the sum of previous values, so the move D gets assigned the value 0.125
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 7
+The total is 32
+1 * 7 / 32 = 0.21875
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.34375
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 21
+The total is 32
+1 * 21 / 32 = 0.65625
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['D', 0.125], ['C', 0.34375], ['A', 1.0]]
+Random number is 0.4129102056804361, so the selected move is D
+ANT: 2
+Iteration: 0
+Current route ['D']
+Permitted moves and cost: [['E', 4], ['C', 5], ['B', 6]]
+Total Cost of all permitted moves:  15
+Move E has a feromone trail value of 1
+Move E has a heuristic value of 4
+The total is 15
+1 * 4 / 15 = 0.26666666666666666
+To normalize, we add the sum of previous values, so the move E gets assigned the value 0.26666666666666666
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 5
+The total is 15
+1 * 5 / 15 = 0.3333333333333333
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.6
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 6
+The total is 15
+1 * 6 / 15 = 0.4
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['E', 0.26666666666666666], ['C', 0.6], ['B', 1.0]]
+Random number is 0.25001006036625306, so the selected move is E
+ANT: 3
+Iteration: 0
+Current route ['D']
+Permitted moves and cost: [['E', 4], ['C', 5], ['B', 6]]
+Total Cost of all permitted moves:  15
+Move E has a feromone trail value of 1
+Move E has a heuristic value of 4
+The total is 15
+1 * 4 / 15 = 0.26666666666666666
+To normalize, we add the sum of previous values, so the move E gets assigned the value 0.26666666666666666
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 5
+The total is 15
+1 * 5 / 15 = 0.3333333333333333
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.6
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 6
+The total is 15
+1 * 6 / 15 = 0.4
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['E', 0.26666666666666666], ['C', 0.6], ['B', 1.0]]
+Random number is 0.5406836872348505, so the selected move is E
+ANT: 4
+Iteration: 0
+Current route ['A']
+Permitted moves and cost: [['B', 3], ['E', 21]]
+Total Cost of all permitted moves:  24
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 3
+The total is 24
+1 * 3 / 24 = 0.125
+To normalize, we add the sum of previous values, so the move B gets assigned the value 0.125
+Move E has a feromone trail value of 1
+Move E has a heuristic value of 21
+The total is 24
+1 * 21 / 24 = 0.875
+To normalize, we add the sum of previous values, so the move E gets assigned the value 1.0
+Permitted moves weighted: [['B', 0.125], ['E', 1.0]]
+Random number is 0.4217221146929143, so the selected move is B
+ANT: 0
+Iteration: 1
+Current route ['E', 'D']
+Permitted moves and cost: [['C', 5], ['B', 6]]
+Total Cost of all permitted moves:  11
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 5
+The total is 11
+1 * 5 / 11 = 0.45454545454545453
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.45454545454545453
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 6
+The total is 11
+1 * 6 / 11 = 0.5454545454545454
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['C', 0.45454545454545453], ['B', 1.0]]
+Random number is 0.39977577369292083, so the selected move is C
+ANT: 1
+Iteration: 1
+Current route ['E', 'D']
+Permitted moves and cost: [['C', 5], ['B', 6]]
+Total Cost of all permitted moves:  11
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 5
+The total is 11
+1 * 5 / 11 = 0.45454545454545453
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.45454545454545453
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 6
+The total is 11
+1 * 6 / 11 = 0.5454545454545454
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['C', 0.45454545454545453], ['B', 1.0]]
+Random number is 0.0067732599615365485, so the selected move is C
+ANT: 2
+Iteration: 1
+Current route ['D', 'E']
+Permitted moves and cost: [['C', 7], ['A', 21]]
+Total Cost of all permitted moves:  28
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 7
+The total is 28
+1 * 7 / 28 = 0.25
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.25
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 21
+The total is 28
+1 * 21 / 28 = 0.75
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['C', 0.25], ['A', 1.0]]
+Random number is 0.9841777022102939, so the selected move is C
+ANT: 3
+Iteration: 1
+Current route ['D', 'E']
+Permitted moves and cost: [['C', 7], ['A', 21]]
+Total Cost of all permitted moves:  28
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 7
+The total is 28
+1 * 7 / 28 = 0.25
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.25
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 21
+The total is 28
+1 * 21 / 28 = 0.75
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['C', 0.25], ['A', 1.0]]
+Random number is 0.7283438065872969, so the selected move is C
+ANT: 4
+Iteration: 1
+Current route ['A', 'B']
+Permitted moves and cost: [['C', 5], ['D', 6]]
+Total Cost of all permitted moves:  11
+Move C has a feromone trail value of 1
+Move C has a heuristic value of 5
+The total is 11
+1 * 5 / 11 = 0.45454545454545453
+To normalize, we add the sum of previous values, so the move C gets assigned the value 0.45454545454545453
+Move D has a feromone trail value of 1
+Move D has a heuristic value of 6
+The total is 11
+1 * 6 / 11 = 0.5454545454545454
+To normalize, we add the sum of previous values, so the move D gets assigned the value 1.0
+Permitted moves weighted: [['C', 0.45454545454545453], ['D', 1.0]]
+Random number is 0.27130305716759484, so the selected move is C
+ANT: 0
+Iteration: 2
+Current route ['E', 'D', 'C']
+Permitted moves and cost: [['B', 5]]
+Total Cost of all permitted moves:  5
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 5
+The total is 5
+1 * 5 / 5 = 1.0
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['B', 1.0]]
+Random number is 0.6664027208823052, so the selected move is B
+ANT: 1
+Iteration: 2
+Current route ['E', 'D', 'C']
+Permitted moves and cost: [['B', 5]]
+Total Cost of all permitted moves:  5
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 5
+The total is 5
+1 * 5 / 5 = 1.0
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['B', 1.0]]
+Random number is 0.7448363277942537, so the selected move is B
+ANT: 2
+Iteration: 2
+Current route ['D', 'E', 'C']
+Permitted moves and cost: [['B', 5]]
+Total Cost of all permitted moves:  5
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 5
+The total is 5
+1 * 5 / 5 = 1.0
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['B', 1.0]]
+Random number is 0.725263657168601, so the selected move is B
+ANT: 3
+Iteration: 2
+Current route ['D', 'E', 'C']
+Permitted moves and cost: [['B', 5]]
+Total Cost of all permitted moves:  5
+Move B has a feromone trail value of 1
+Move B has a heuristic value of 5
+The total is 5
+1 * 5 / 5 = 1.0
+To normalize, we add the sum of previous values, so the move B gets assigned the value 1.0
+Permitted moves weighted: [['B', 1.0]]
+Random number is 0.5575609083863451, so the selected move is B
+ANT: 4
+Iteration: 2
+Current route ['A', 'B', 'C']
+Permitted moves and cost: [['D', 5], ['E', 7]]
+Total Cost of all permitted moves:  12
+Move D has a feromone trail value of 1
+Move D has a heuristic value of 5
+The total is 12
+1 * 5 / 12 = 0.4166666666666667
+To normalize, we add the sum of previous values, so the move D gets assigned the value 0.4166666666666667
+Move E has a feromone trail value of 1
+Move E has a heuristic value of 7
+The total is 12
+1 * 7 / 12 = 0.5833333333333334
+To normalize, we add the sum of previous values, so the move E gets assigned the value 1.0
+Permitted moves weighted: [['D', 0.4166666666666667], ['E', 1.0]]
+Random number is 0.7934012349403956, so the selected move is D
+ANT: 0
+Iteration: 3
+Current route ['E', 'D', 'C', 'B']
+Permitted moves and cost: [['A', 3]]
+Total Cost of all permitted moves:  3
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 3
+The total is 3
+1 * 3 / 3 = 1.0
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['A', 1.0]]
+Random number is 0.8378944446480907, so the selected move is A
+ANT: 1
+Iteration: 3
+Current route ['E', 'D', 'C', 'B']
+Permitted moves and cost: [['A', 3]]
+Total Cost of all permitted moves:  3
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 3
+The total is 3
+1 * 3 / 3 = 1.0
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['A', 1.0]]
+Random number is 0.38890092705363966, so the selected move is A
+ANT: 2
+Iteration: 3
+Current route ['D', 'E', 'C', 'B']
+Permitted moves and cost: [['A', 3]]
+Total Cost of all permitted moves:  3
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 3
+The total is 3
+1 * 3 / 3 = 1.0
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['A', 1.0]]
+Random number is 0.10377967939752808, so the selected move is A
+ANT: 3
+Iteration: 3
+Current route ['D', 'E', 'C', 'B']
+Permitted moves and cost: [['A', 3]]
+Total Cost of all permitted moves:  3
+Move A has a feromone trail value of 1
+Move A has a heuristic value of 3
+The total is 3
+1 * 3 / 3 = 1.0
+To normalize, we add the sum of previous values, so the move A gets assigned the value 1.0
+Permitted moves weighted: [['A', 1.0]]
+Random number is 0.5684696915747951, so the selected move is A
+ANT: 4
+Iteration: 3
+Current route ['A', 'B', 'C', 'D']
+Permitted moves and cost: [['E', 4]]
+Total Cost of all permitted moves:  4
+Move E has a feromone trail value of 1
+Move E has a heuristic value of 4
+The total is 4
+1 * 4 / 4 = 1.0
+To normalize, we add the sum of previous values, so the move E gets assigned the value 1.0
+Permitted moves weighted: [['E', 1.0]]
+Random number is 0.6775297349746586, so the selected move is E
+All ants have finished their route
+Ant 0 route = ['E', 'D', 'C', 'B', 'A'], cost = 17
+Ant 1 route = ['E', 'D', 'C', 'B', 'A'], cost = 17
+Ant 2 route = ['D', 'E', 'C', 'B', 'A'], cost = 19
+Ant 3 route = ['D', 'E', 'C', 'B', 'A'], cost = 19
+Ant 4 route = ['A', 'B', 'C', 'D', 'E'], cost = 17
+Current feromone trails: {'CE': 1, 'AB': 1, 'AE': 1, 'CD': 1, 'BC': 1, 'BD': 1, 'DE': 1}
+Update feromone trails
+Evaporation coefficient = 0.1
+Q = 50
+Current value for CE, 1
+Values for CE
+CE is in ant's 2 route, so the value is 50 / it's cost squared, which is 361
+CE is in ant's 3 route, so the value is 50 / it's cost squared, which is 361
+Values for trail CE are [0, 0, 0.055401662049861494, 0.055401662049861494, 0]
+The sum of those values is 0.11080332409972299
+So the new value for the trail is 1 * 0.9 / 0.11080332409972299 = 1.010803324099723
+Updated value = 1.010803324099723
+Current value for AB, 1
+Values for AB
+AB is in ant's 0 route, so the value is 50 / it's cost squared, which is 289
+AB is in ant's 1 route, so the value is 50 / it's cost squared, which is 289
+AB is in ant's 2 route, so the value is 50 / it's cost squared, which is 361
+AB is in ant's 3 route, so the value is 50 / it's cost squared, which is 361
+AB is in ant's 4 route, so the value is 50 / it's cost squared, which is 289
+Values for trail AB are [0.06920415224913495, 0.06920415224913495, 0.055401662049861494, 0.055401662049861494, 0.06920415224913495]
+The sum of those values is 0.31841578084712785
+So the new value for the trail is 1 * 0.9 / 0.31841578084712785 = 1.2184157808471279
+Updated value = 1.2184157808471279
+Current value for AE, 1
+Values for AE
+Values for trail AE are [0, 0, 0, 0, 0]
+The sum of those values is 0
+So the new value for the trail is 1 * 0.9 / 0 = 0.9
+Updated value = 0.9
+Current value for CD, 1
+Values for CD
+CD is in ant's 0 route, so the value is 50 / it's cost squared, which is 289
+CD is in ant's 1 route, so the value is 50 / it's cost squared, which is 289
+CD is in ant's 4 route, so the value is 50 / it's cost squared, which is 289
+Values for trail CD are [0.06920415224913495, 0.06920415224913495, 0, 0, 0.06920415224913495]
+The sum of those values is 0.20761245674740486
+So the new value for the trail is 1 * 0.9 / 0.20761245674740486 = 1.1076124567474048
+Updated value = 1.1076124567474048
+Current value for BC, 1
+Values for BC
+BC is in ant's 0 route, so the value is 50 / it's cost squared, which is 289
+BC is in ant's 1 route, so the value is 50 / it's cost squared, which is 289
+BC is in ant's 2 route, so the value is 50 / it's cost squared, which is 361
+BC is in ant's 3 route, so the value is 50 / it's cost squared, which is 361
+BC is in ant's 4 route, so the value is 50 / it's cost squared, which is 289
+Values for trail BC are [0.06920415224913495, 0.06920415224913495, 0.055401662049861494, 0.055401662049861494, 0.06920415224913495]
+The sum of those values is 0.31841578084712785
+So the new value for the trail is 1 * 0.9 / 0.31841578084712785 = 1.2184157808471279
+Updated value = 1.2184157808471279
+Current value for BD, 1
+Values for BD
+Values for trail BD are [0, 0, 0, 0, 0]
+The sum of those values is 0
+So the new value for the trail is 1 * 0.9 / 0 = 0.9
+Updated value = 0.9
+Current value for DE, 1
+Values for DE
+DE is in ant's 0 route, so the value is 50 / it's cost squared, which is 289
+DE is in ant's 1 route, so the value is 50 / it's cost squared, which is 289
+DE is in ant's 2 route, so the value is 50 / it's cost squared, which is 361
+DE is in ant's 3 route, so the value is 50 / it's cost squared, which is 361
+DE is in ant's 4 route, so the value is 50 / it's cost squared, which is 289
+Values for trail DE are [0.06920415224913495, 0.06920415224913495, 0.055401662049861494, 0.055401662049861494, 0.06920415224913495]
+The sum of those values is 0.31841578084712785
+So the new value for the trail is 1 * 0.9 / 0.31841578084712785 = 1.2184157808471279
+Updated value = 1.2184157808471279
+UpdateValues: {'CE': 1.010803324099723, 'AB': 1.2184157808471279, 'AE': 0.9, 'CD': 1.1076124567474048, 'BC': 1.2184157808471279, 'BD': 0.9, 'DE': 1.2184157808471279}
