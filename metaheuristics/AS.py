@@ -56,7 +56,7 @@ class Graph():
 			print("Move {} has a heuristic value of {}".format(neighbor[0], c))
 			print("The total is {}".format(total))
 			print("1 * {} / {} = {}".format(c, total, val))
-			print("To normalize, we add the sum of previous values, so the move {} gets assigned the value {}".format(neighbor[0], val+s))
+			print("To use Roullete Wheel, we add the sum of previous values, so the move {} gets assigned the value {}".format(neighbor[0], val+s))
 			s+=val
 
 		print("Permitted moves weighted:", neighbors)
@@ -86,29 +86,29 @@ ants = []
 print("INITIAL ANTS")
 for i in range(5):
 	ant = Ant(random.choice(g.nodes))
-	ants.append(Ant(random.choice(g.nodes)))
+	ants.append(ant)
 	print(ant.routes)
 
 for i in range(4):
 	for j in range(len(ants)):
 		ant = ants[j]
-		print("ANT:", j)
+		print("\nANT:", j)
 		print("Iteration:",i)
 		print("Current route", ant.routes)
 		nextPlace, cost = g.getNeighbors(ant.routes)
 		ant.totalCost+=cost
 		ant.routes.append(nextPlace)
 
-print("All ants have finished their route")
+print("\nAll ants have finished their route\n")
 for i in range(len(ants)):
 	ant = ants[i]
-	print("Ant {} route = {}, cost = {}".format(i, ant.routes, ant.totalCost))
+	print("Ant {} route = {}, cost = {}\n".format(i, ant.routes, ant.totalCost))
 
-print("Current feromone trails:", g.feromoneTrails)
+print("\nCurrent feromone trails:", g.feromoneTrails)
 
-print("Update feromone trails")
-print("Evaporation coefficient = 0.1")
-print("Q = 50")
+print("\nUpdate feromone trails")
+print("\nEvaporation coefficient = 0.1")
+print("\nQ = 50")
 q = 20
 
 def getAntsTrail(value, ants):
@@ -119,14 +119,14 @@ def getAntsTrail(value, ants):
 			minChar = min(ant.routes[i], ant.routes[i+1])
 			maxChar = max(ant.routes[i], ant.routes[i+1])
 			if(minChar+maxChar==value):
-				r[j] = q/ant.totalCost**2
-				print("{} is in ant's {} route, so the value is 50 / it's cost squared, which is {}".format(value, j, ant.totalCost**2))
+				r[j] = q/ant.totalCost
+				print("{} is in ant's {} route, so the value is 50 / it's cost, which is {}".format(value, j, ant.totalCost))
 	return r
 
 evaporation = 0.9
 for key in g.feromoneTrails:
 	value = g.feromoneTrails[key]
-	print("Current value for {}, {}".format(key, value))
+	print("\nCurrent value for {}, {}".format(key, value))
 	print("Values for {}".format(key))
 	r = getAntsTrail(key, ants)
 	print("Values for trail {} are {}".format(key,r))

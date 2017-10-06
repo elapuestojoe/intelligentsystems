@@ -1,15 +1,18 @@
 import math
 import random
+
+random.seed(1)
+
 def f(x):
 	return x * math.sin(x)/2 + 10
 
 minX = 0
-maxX = 15
+maxX = 50
 numParticles = 7
 
 C0 = 1
-C1 = 0.5
-C2 = 1 - C1
+C1 = 1
+C2 = 4 - C1
 maxVelocity = 3
 
 iterations = 10
@@ -71,7 +74,6 @@ class Particle(object):
 		# La idea es explorar el vecindario local y obtener la mejor posición
 		# Como las soluciones son continuas, se debe explorar un número discreto de vecinos
 		# Como el rango de vecinos es 3, debemos calcular +=1.5
-		self.pBest = self.position
 		print("Local best of particle {} = {}".format(self.id, self.pBest))
 		print("Calculate 3 neighbors between current position and += 3")
 		for i in range(3):
@@ -85,7 +87,9 @@ class Particle(object):
 				print("Position is higher than upper bound {0}, so we transform it to {0}".format(maxX))
 				position = maxX
 
-			if(f(position) < self.pBest):
+			if(self.pBest is None):
+				self.pBest = position
+			elif(f(position) < f(self.pBest)):
 				print("f({0}) = {1} is lower than f({2}) = {3}, so the new local best will be {0}"\
 					.format(position, f(position), self.position, f(self.position)))
 				self.pBest = position

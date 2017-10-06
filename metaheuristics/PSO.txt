@@ -1,0 +1,1785 @@
+Initial Particles 
+[ID: 1, Position: 2.0154636616860184, Velocity: 1, Pbest: None
+, ID: 2, Position: 12.71150605405849, Velocity: 1, Pbest: None
+, ID: 3, Position: 11.45661928464921, Velocity: 1, Pbest: None
+, ID: 4, Position: 3.826035386091325, Velocity: 1, Pbest: None
+, ID: 5, Position: 7.431526306379114, Velocity: 1, Pbest: None
+, ID: 6, Position: 6.742365971831072, Velocity: 1, Pbest: None
+, ID: 7, Position: 9.773894590841444, Velocity: 1, Pbest: None
+]
+-----------Iteration #0
+
+Local best of particle 1 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 3.7478037684990975
+Neighbor 1, -0.4213788176685722
+Position is lower than lower bound 0, so we transform it to 0
+Neighbor 2, -0.8144514791819437
+Position is lower than lower bound 0, so we transform it to 0
+Final local best of particle is 3.7478037684990975
+
+------ gBest update:
+gBest is None, so we update it to our current best, which is 2.0154636616860184
+------
+
+Local best of particle 2 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 14.726096677577708
+Neighbor 1, 12.30810846148881
+f(12.30810846148881) = 8.428250078659012 is lower than f(12.71150605405849) = 10.919209976829125, so the new local best will be 12.30810846148881
+Neighbor 2, 14.285186548806141
+Final local best of particle is 12.30810846148881
+
+------ gBest update:
+f(12.30810846148881) = 8.428250078659012 < f(2.0154636616860184) = 10.909733753547847, so gBest gets updated to 12.30810846148881
+------
+
+Local best of particle 3 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.469255604755874
+Neighbor 1, 11.12894244897802
+f(11.12894244897802) = 4.48494327520336 is lower than f(11.45661928464921) = 4.869794143563592, so the new local best will be 11.12894244897802
+Neighbor 2, 12.785859478693906
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(12.71150605405849) = 10.919209976829125, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 2.198608713714041
+Neighbor 1, 6.497659559414859
+f(6.497659559414859) = 10.691460643590695 is lower than f(3.826035386091325) = 8.790511102114465, so the new local best will be 6.497659559414859
+Neighbor 2, 6.234600131760226
+f(6.234600131760226) = 9.848605007670947 is lower than f(3.826035386091325) = 8.790511102114465, so the new local best will be 6.234600131760226
+Final local best of particle is 6.234600131760226
+
+Local best of particle 5 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 4.615066204580435
+Neighbor 1, 4.5842014723398785
+Neighbor 2, 7.680001143140093
+Final local best of particle is 4.615066204580435
+
+Local best of particle 6 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.377260948502135
+Neighbor 1, 6.029591397960346
+f(6.029591397960346) = 9.243634376044357 is lower than f(6.742365971831072) = 11.494154789821346, so the new local best will be 6.029591397960346
+Neighbor 2, 5.0419623546147525
+f(5.0419623546147525) = 7.614696762770736 is lower than f(6.742365971831072) = 11.494154789821346, so the new local best will be 5.0419623546147525
+Final local best of particle is 5.0419623546147525
+
+Local best of particle 7 = None
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.306594044337746
+Neighbor 1, 6.948139316290652
+Neighbor 2, 8.104044588479654
+Final local best of particle is 9.306594044337746
+
+Update velocity of particle 1
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.43788759365057206 * (3.7478037684990975 - 2.0154636616860184) = 0.8589154311946673
+C2 * randomN * (gBest - position) = 3 * 0.23308445025757263 * (11.45661928464921 - 2.0154636616860184) = 6.601759704523699
+New velocity = 8.360329945280453
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 1
+Current position: 2.0154636616860184
+Current velocity: 3
+New position = 2.0154636616860184 + 3 = 5.015463661686018
+
+Update velocity of particle 2
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.2308665415409843 * (12.30810846148881 - 12.71150605405849) = -0.08825574376192057
+C2 * randomN * (gBest - position) = 3 * 0.4596034657377336 * (11.45661928464921 - 12.71150605405849) = -1.7302509249867974
+New velocity = -0.8233819320493182
+
+
+Update position of particle 2
+Current position: 12.71150605405849
+Current velocity: -0.8233819320493182
+New position = 12.71150605405849 + -0.8233819320493182 = 11.88812412200917
+
+Update velocity of particle 3
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.28978161459048557 * (11.12894244897802 - 11.45661928464921) = -0.007041678621039555
+C2 * randomN * (gBest - position) = 3 * 0.8375779756625729 * (11.45661928464921 - 11.45661928464921) = 0.0
+New velocity = 0.905045277495301
+
+
+Update position of particle 3
+Current position: 11.45661928464921
+Current velocity: 0.905045277495301
+New position = 11.45661928464921 + 0.905045277495301 = 12.361664562144512
+
+Update velocity of particle 4
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.5564543226524334 * (6.234600131760226 - 3.826035386091325) = 1.5470075589009546
+C2 * randomN * (gBest - position) = 3 * 0.1859062658947177 * (11.45661928464921 - 3.826035386091325) = 4.255720077531762
+New velocity = 6.59597634164748
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 4
+Current position: 3.826035386091325
+Current velocity: 3
+New position = 3.826035386091325 + 3 = 6.826035386091325
+
+Update velocity of particle 5
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.9925434121760651 * (4.615066204580435 - 7.431526306379114) = -2.422005088032203
+C2 * randomN * (gBest - position) = 3 * 0.12088995980580641 * (11.45661928464921 - 7.431526306379114) = 1.4597799850731168
+New velocity = -0.335678934623892
+
+
+Update position of particle 5
+Current position: 7.431526306379114
+Current velocity: -0.335678934623892
+New position = 7.431526306379114 + -0.335678934623892 = 7.095847371755222
+
+Update velocity of particle 6
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.3326951853601291 * (5.0419623546147525 - 6.742365971831072) = -1.2268146964197628
+C2 * randomN * (gBest - position) = 3 * 0.7111917696952796 * (11.45661928464921 - 6.742365971831072) = 10.058214469004902
+New velocity = 10.492498372388084
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 6
+Current position: 6.742365971831072
+Current velocity: 3
+New position = 6.742365971831072 + 3 = 9.742365971831072
+
+Update velocity of particle 7
+Current velocity = 1
+C0 * self.velocity = 1 * 1 = 1
+C1 * randomN * (pBest - position) = 1 * 0.9364405867994596 * (9.306594044337746 - 9.773894590841444) = -0.19725083176500544
+C2 * randomN * (gBest - position) = 3 * 0.830035693274327 * (11.45661928464921 - 9.773894590841444) = 4.190164673443679
+New velocity = 4.752565475464048
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 7
+Current position: 9.773894590841444
+Current velocity: 3
+New position = 9.773894590841444 + 3 = 12.773894590841444
+
+-----------End of Iteration #0
+
+-----------Iteration #1
+
+Local best of particle 1 = 3.7478037684990975
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 6.037297060170444
+Neighbor 1, 3.835674727283524
+f(3.835674727283524) = 8.773197501524377 is lower than f(5.015463661686018) = 7.606562199169522, so the new local best will be 3.835674727283524
+Neighbor 2, 5.540947298547375
+f(5.540947298547375) = 8.127329031928213 is lower than f(5.015463661686018) = 7.606562199169522, so the new local best will be 5.540947298547375
+Final local best of particle is 5.540947298547375
+
+Local best of particle 2 = 12.30810846148881
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 14.182998127000317
+Neighbor 1, 13.965308632579047
+Neighbor 2, 11.919827045486773
+f(11.919827045486773) = 6.4095622200415985 is lower than f(11.88812412200917) = 6.2705255917147475, so the new local best will be 11.919827045486773
+Final local best of particle is 11.919827045486773
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 12.895678110039821
+Neighbor 1, 9.56881954305256
+Neighbor 2, 10.818104403402918
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(11.45661928464921) = 4.869794143563592, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 6.234600131760226
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.610460871417143
+Neighbor 1, 6.3119193818959705
+Neighbor 2, 4.8640797955656305
+f(4.8640797955656305) = 7.595887234806263 is lower than f(6.826035386091325) = 11.76309134744225, so the new local best will be 4.8640797955656305
+Final local best of particle is 4.8640797955656305
+
+------ gBest update:
+f(4.8640797955656305) = 7.595887234806263 < f(12.361664562144512) = 8.743564380105566, so gBest gets updated to 4.8640797955656305
+------
+
+Local best of particle 5 = 4.615066204580435
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 7.388639940084141
+Neighbor 1, 8.314091944149013
+Neighbor 2, 8.142762354769186
+Final local best of particle is 4.615066204580435
+
+------ gBest update:
+f(4.615066204580435) = 7.7033864315484815 < f(6.826035386091325) = 11.76309134744225, so gBest gets updated to 4.615066204580435
+------
+
+Local best of particle 6 = 5.0419623546147525
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.990584094840914
+Neighbor 1, 9.37613575209845
+Neighbor 2, 9.792924901330963
+Final local best of particle is 5.0419623546147525
+
+------ gBest update:
+f(5.0419623546147525) = 7.614696762770736 < f(7.095847371755222) = 12.576218684533176, so gBest gets updated to 5.0419623546147525
+------
+
+Local best of particle 7 = 9.306594044337746
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 14.444550280842318
+Neighbor 1, 12.899525096520314
+Neighbor 2, 12.1334251606268
+f(12.1334251606268) = 7.454733142532401 is lower than f(12.773894590841444) = 11.315951520555942, so the new local best will be 12.1334251606268
+Final local best of particle is 12.1334251606268
+
+------ gBest update:
+f(12.1334251606268) = 7.454733142532401 < f(9.742365971831072) = 8.478845962677738, so gBest gets updated to 12.1334251606268
+------
+
+Update velocity of particle 1
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.4896935204622582 * (5.540947298547375 - 5.015463661686018) = 0.015541159625373908
+C2 * randomN * (gBest - position) = 3 * 0.04348729035652743 * (12.773894590841444 - 5.015463661686018) = 1.0121794155817345
+New velocity = 4.269505347661683
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 1
+Current position: 5.015463661686018
+Current velocity: 3
+New position = 5.015463661686018 + 3 = 8.015463661686018
+
+Update velocity of particle 2
+Current velocity = -0.8233819320493182
+C0 * self.velocity = 1 * -0.8233819320493182 = -0.8233819320493182
+C1 * randomN * (pBest - position) = 1 * 0.703382088603836 * (11.919827045486773 - 11.88812412200917) = 0.031169924965987715
+C2 * randomN * (gBest - position) = 3 * 0.5931837303800576 * (12.773894590841444 - 11.88812412200917) = 1.5762738928872613
+New velocity = 0.7751912293684671
+
+
+Update position of particle 2
+Current position: 11.88812412200917
+Current velocity: 0.7751912293684671
+New position = 11.88812412200917 + 0.7751912293684671 = 12.663315351377637
+
+Update velocity of particle 3
+Current velocity = 0.905045277495301
+C0 * self.velocity = 1 * 0.905045277495301 = 0.905045277495301
+C1 * randomN * (pBest - position) = 1 * 0.393599686377914 * (11.12894244897802 - 12.361664562144512) = -0.20999322192415018
+C2 * randomN * (gBest - position) = 3 * 0.5022385584334831 * (12.773894590841444 - 12.361664562144512) = 0.6211134460672215
+New velocity = 1.0409596864290718
+
+
+Update position of particle 3
+Current position: 12.361664562144512
+Current velocity: 1.0409596864290718
+New position = 12.361664562144512 + 1.0409596864290718 = 13.402624248573584
+
+Update velocity of particle 4
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.9820766375385342 * (4.8640797955656305 - 6.826035386091325) = -1.5117321818204508
+C2 * randomN * (gBest - position) = 3 * 0.5396174484497788 * (12.773894590841444 - 6.826035386091325) = 9.628705823417366
+New velocity = 10.701915074073963
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 4
+Current position: 6.826035386091325
+Current velocity: 3
+New position = 6.826035386091325 + 3 = 9.826035386091325
+
+Update velocity of particle 5
+Current velocity = -0.335678934623892
+C0 * self.velocity = 1 * -0.335678934623892 = -0.335678934623892
+C1 * randomN * (pBest - position) = 1 * 0.8602897789205496 * (4.615066204580435 - 7.095847371755222) = -0.5759781659662881
+C2 * randomN * (gBest - position) = 3 * 0.513771663187637 * (12.773894590841444 - 7.095847371755222) = 8.751659290223595
+New velocity = 6.281789673740642
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 5
+Current position: 7.095847371755222
+Current velocity: 3
+New position = 7.095847371755222 + 3 = 10.095847371755223
+
+Update velocity of particle 6
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.9524673882682695 * (5.0419623546147525 - 9.742365971831072) = -2.715868804597583
+C2 * randomN * (gBest - position) = 3 * 0.45913173191066836 * (12.773894590841444 - 9.742365971831072) = 4.175612955548966
+New velocity = 2.6986317984522117
+
+
+Update position of particle 6
+Current position: 9.742365971831072
+Current velocity: 2.6986317984522117
+New position = 9.742365971831072 + 2.6986317984522117 = 12.440997770283284
+
+Update velocity of particle 7
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.2692794774414212 * (12.1334251606268 - 12.773894590841444) = -0.3509748840835761
+C2 * randomN * (gBest - position) = 3 * 0.9571162814602269 * (12.773894590841444 - 12.773894590841444) = 0.0
+New velocity = 2.827534726514596
+
+
+Update position of particle 7
+Current position: 12.773894590841444
+Current velocity: 2.827534726514596
+New position = 12.773894590841444 + 2.827534726514596 = 15.60142931735604
+
+-----------End of Iteration #1
+
+-----------Iteration #2
+
+Local best of particle 1 = 5.540947298547375
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 5.049718438388376
+f(5.049718438388376) = 7.617437064340841 is lower than f(8.015463661686018) = 13.955591581539473, so the new local best will be 5.049718438388376
+Neighbor 1, 9.717395057378358
+Neighbor 2, 9.93837913323891
+f(9.93837913323891) = 7.558552798335295 is lower than f(8.015463661686018) = 13.955591581539473, so the new local best will be 9.93837913323891
+Final local best of particle is 9.93837913323891
+
+------ gBest update:
+f(9.93837913323891) = 7.558552798335295 < f(12.773894590841444) = 11.315951520555942, so gBest gets updated to 9.93837913323891
+------
+
+Local best of particle 2 = 11.919827045486773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 14.980392836333687
+Neighbor 1, 14.106335822376815
+Neighbor 2, 14.518154756612514
+Final local best of particle is 11.919827045486773
+
+------ gBest update:
+f(11.919827045486773) = 6.4095622200415985 < f(8.015463661686018) = 13.955591581539473, so gBest gets updated to 11.919827045486773
+------
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 13.514693949711596
+Neighbor 1, 13.770771437243859
+Neighbor 2, 12.959168326702486
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(12.663315351377637) = 10.61285986299989, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 4.8640797955656305
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 7.162775171215768
+Neighbor 1, 12.046096317151164
+f(12.046096317151164) = 7.005833384669903 is lower than f(9.826035386091325) = 8.081092221068642, so the new local best will be 12.046096317151164
+Neighbor 2, 10.246031389349607
+f(10.246031389349607) = 6.249950612309823 is lower than f(9.826035386091325) = 8.081092221068642, so the new local best will be 10.246031389349607
+Final local best of particle is 10.246031389349607
+
+------ gBest update:
+f(10.246031389349607) = 6.249950612309823 < f(13.402624248573584) = 14.973293956463703, so gBest gets updated to 10.246031389349607
+------
+
+Local best of particle 5 = 4.615066204580435
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.294883892818081
+Neighbor 1, 10.124170176328402
+f(10.124170176328402) = 6.741269010812479 is lower than f(10.095847371755223) = 6.861080612270946, so the new local best will be 10.124170176328402
+Neighbor 2, 10.005398045121627
+Final local best of particle is 10.124170176328402
+
+------ gBest update:
+f(10.124170176328402) = 6.741269010812479 < f(9.826035386091325) = 8.081092221068642, so gBest gets updated to 10.124170176328402
+------
+
+Local best of particle 6 = 5.0419623546147525
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 11.581737557553017
+f(11.581737557553017) = 5.175805781988718 is lower than f(12.440997770283284) = 9.222159833536038, so the new local best will be 11.581737557553017
+Neighbor 1, 11.517465284392213
+f(11.517465284392213) = 5.007881192586633 is lower than f(12.440997770283284) = 9.222159833536038, so the new local best will be 11.517465284392213
+Neighbor 2, 12.67187054471035
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(10.095847371755223) = 6.861080612270946, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 12.1334251606268
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 15.740936716785031
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 15.674714788696354
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 14.748880800598346
+Final local best of particle is 12.1334251606268
+
+------ gBest update:
+f(12.1334251606268) = 7.454733142532401 < f(12.440997770283284) = 9.222159833536038, so gBest gets updated to 12.1334251606268
+------
+
+Update velocity of particle 1
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.027974984083842358 * (9.93837913323891 - 8.015463661686018) = 0.4415110669889751
+C2 * randomN * (gBest - position) = 3 * 0.1772112589385827 * (15 - 8.015463661686018) = 3.713215432844698
+New velocity = 6.767008962555964
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 1
+Current position: 8.015463661686018
+Current velocity: 3
+New position = 8.015463661686018 + 3 = 11.015463661686018
+
+Update velocity of particle 2
+Current velocity = 0.7751912293684671
+C0 * self.velocity = 1 * 0.7751912293684671 = 0.7751912293684671
+C1 * randomN * (pBest - position) = 1 * 0.5844608707784413 * (11.919827045486773 - 12.663315351377637) = -0.6401500193128611
+C2 * randomN * (gBest - position) = 3 * 0.798438940577426 * (15 - 12.663315351377637) = 5.597100045928723
+New velocity = 5.937751452622628
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 2
+Current position: 12.663315351377637
+Current velocity: 3
+New position = 12.663315351377637 + 3 = 15.663315351377637
+
+Update velocity of particle 3
+Current velocity = 1.0409596864290718
+C0 * self.velocity = 1 * 1.0409596864290718 = 1.0409596864290718
+C1 * randomN * (pBest - position) = 1 * 0.7970975626354962 * (11.12894244897802 - 13.402624248573584) = -1.8563187899535025
+C2 * randomN * (gBest - position) = 3 * 0.25529404008730594 * (15 - 13.402624248573584) = 1.2234015273574375
+New velocity = 0.4520149931201958
+
+
+Update position of particle 3
+Current position: 13.402624248573584
+Current velocity: 0.4520149931201958
+New position = 13.402624248573584 + 0.4520149931201958 = 13.85463924169378
+
+Update velocity of particle 4
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.841744832274096 * (10.246031389349607 - 9.826035386091325) = 0.28270499042334885
+C2 * randomN * (gBest - position) = 3 * 0.08323413780389788 * (15 - 9.826035386091325) = 1.2919514509996977
+New velocity = 4.645480916318131
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 4
+Current position: 9.826035386091325
+Current velocity: 3
+New position = 9.826035386091325 + 3 = 12.826035386091325
+
+Update velocity of particle 5
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.0166906301155596 * (10.124170176328402 - 10.095847371755223) = 0.0004123793243858447
+C2 * randomN * (gBest - position) = 3 * 0.7555867752521982 * (15 - 10.095847371755223) = 11.116538609160191
+New velocity = 14.117011334615157
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 5
+Current position: 10.095847371755223
+Current velocity: 3
+New position = 10.095847371755223 + 3 = 13.095847371755223
+
+Update velocity of particle 6
+Current velocity = 2.6986317984522117
+C0 * self.velocity = 1 * 2.6986317984522117 = 2.6986317984522117
+C1 * randomN * (pBest - position) = 1 * 0.2495592256534228 * (11.517465284392213 - 12.440997770283284) = -0.1011163041419607
+C2 * randomN * (gBest - position) = 3 * 0.6248020841524763 * (15 - 12.440997770283284) = 4.796609779433514
+New velocity = 7.26476552584097
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 6
+Current position: 12.440997770283284
+Current velocity: 3
+New position = 12.440997770283284 + 3 = 15.440997770283284
+
+Update velocity of particle 7
+Current velocity = 2.827534726514596
+C0 * self.velocity = 1 * 2.827534726514596 = 2.827534726514596
+C1 * randomN * (pBest - position) = 1 * 0.3444228640964949 * (12.1334251606268 - 15) = -0.1992710350460309
+C2 * randomN * (gBest - position) = 3 * 0.1596255246938475 * (15 - 15) = 0.0
+New velocity = 1.8402208101907287
+
+
+Update position of particle 7
+Current position: 15
+Current velocity: 1.8402208101907287
+New position = 15 + 1.8402208101907287 = 16.84022081019073
+
+-----------End of Iteration #2
+
+-----------Iteration #3
+
+Local best of particle 1 = 9.93837913323891
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 11.179746055974096
+f(11.179746055974096) = 4.504661429988862 is lower than f(11.015463661686018) = 4.493357527359727, so the new local best will be 11.179746055974096
+Neighbor 1, 9.024333339020588
+Neighbor 2, 9.652950282598098
+Final local best of particle is 11.179746055974096
+
+------ gBest update:
+f(11.179746055974096) = 4.504661429988862 < f(15) = 14.877158801178377, so gBest gets updated to 11.179746055974096
+------
+
+Local best of particle 2 = 11.919827045486773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 16.269539563111636
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 14.728209780273984
+Neighbor 2, 13.932010598323956
+Final local best of particle is 11.919827045486773
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 13.697265326715454
+Neighbor 1, 10.996446707485703
+Neighbor 2, 13.173981870262601
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(11.015463661686018) = 4.493357527359727, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 10.246031389349607
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 12.351547461345781
+Neighbor 1, 10.954271214599203
+f(10.954271214599203) = 4.527535571444789 is lower than f(12.826035386091325) = 11.64658446607063, so the new local best will be 10.954271214599203
+Neighbor 2, 10.478605540763805
+Final local best of particle is 10.954271214599203
+
+------ gBest update:
+f(10.954271214599203) = 4.527535571444789 < f(13.85463924169378) = 16.652677893588127, so gBest gets updated to 10.954271214599203
+------
+
+Local best of particle 5 = 10.124170176328402
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 15.494758373891344
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 13.156543257327282
+Neighbor 2, 11.350393327065843
+f(11.350393327065843) = 4.678314891625237 is lower than f(13.095847371755223) = 13.307237177151535, so the new local best will be 11.350393327065843
+Final local best of particle is 11.350393327065843
+
+------ gBest update:
+f(11.350393327065843) = 4.678314891625237 < f(12.826035386091325) = 11.64658446607063, so gBest gets updated to 11.350393327065843
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 15.6338918402041
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 16.90223801026732
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 12.124908651055724
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(13.095847371755223) = 13.307237177151535, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 12.1334251606268
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 12.107187124966773
+f(12.107187124966773) = 7.316948522177219 is lower than f(15) = 14.877158801178377, so the new local best will be 12.107187124966773
+Neighbor 1, 12.878770442396076
+Neighbor 2, 16.31301283657074
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 12.107187124966773
+
+------ gBest update:
+f(12.107187124966773) = 7.316948522177219 < f(15) = 14.877158801178377, so gBest gets updated to 12.107187124966773
+------
+
+Update velocity of particle 1
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.16022759262970465 * (11.179746055974096 - 11.015463661686018) = 0.11575429957238129
+C2 * randomN * (gBest - position) = 3 * 0.6781757952769475 * (15 - 11.015463661686018) = 8.106648300137943
+New velocity = 11.132970872686165
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 1
+Current position: 11.015463661686018
+Current velocity: 3
+New position = 11.015463661686018 + 3 = 14.015463661686018
+
+Update velocity of particle 2
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.5447021635789044 * (11.919827045486773 - 15) = -0.679485377631881
+C2 * randomN * (gBest - position) = 3 * 0.9755945178178834 * (15 - 15) = 0.0
+New velocity = 1.322223127479419
+
+
+Update position of particle 2
+Current position: 15
+Current velocity: 1.322223127479419
+New position = 15 + 1.322223127479419 = 16.32222312747942
+
+Update velocity of particle 3
+Current velocity = 0.4520149931201958
+C0 * self.velocity = 1 * 0.4520149931201958 = 0.4520149931201958
+C1 * randomN * (pBest - position) = 1 * 0.797810857706151 * (11.12894244897802 - 13.85463924169378) = -1.4080936464674718
+C2 * randomN * (gBest - position) = 3 * 0.22319578024667075 * (15 - 13.85463924169378) = 0.7669190643422256
+New velocity = -0.9556564385810448
+
+
+Update position of particle 3
+Current position: 13.85463924169378
+Current velocity: -0.9556564385810448
+New position = 13.85463924169378 + -0.9556564385810448 = 12.898982803112736
+
+Update velocity of particle 4
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.6485064180992564 * (10.954271214599203 - 12.826035386091325) = -0.7391559462463082
+C2 * randomN * (gBest - position) = 3 * 0.5758459627880567 * (15 - 12.826035386091325) = 3.7556062384902202
+New velocity = 5.541755160109342
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 4
+Current position: 12.826035386091325
+Current velocity: 3
+New position = 12.826035386091325 + 3 = 15.826035386091325
+
+Update velocity of particle 5
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.32124580934512525 * (11.350393327065843 - 13.095847371755223) = -1.1012904964441863
+C2 * randomN * (gBest - position) = 3 * 0.058785116206491295 * (15 - 13.095847371755223) = 0.3358075005787951
+New velocity = 2.775087703317833
+
+
+Update position of particle 5
+Current position: 13.095847371755223
+Current velocity: 2.775087703317833
+New position = 13.095847371755223 + 2.775087703317833 = 15.870935075073056
+
+Update velocity of particle 6
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.29860594962301334 * (11.517465284392213 - 15) = -3.3707568789521627
+C2 * randomN * (gBest - position) = 3 * 0.8755342442351592 * (15 - 15) = 0.0
+New velocity = 1.9600944141508259
+
+
+Update position of particle 6
+Current position: 15
+Current velocity: 1.9600944141508259
+New position = 15 + 1.9600944141508259 = 16.960094414150827
+
+Update velocity of particle 7
+Current velocity = 1.8402208101907287
+C0 * self.velocity = 1 * 1.8402208101907287 = 1.8402208101907287
+C1 * randomN * (pBest - position) = 1 * 0.30638662033324593 * (12.107187124966773 - 15) = -2.4835215281097627
+C2 * randomN * (gBest - position) = 3 * 0.31036362735313405 * (15 - 15) = 0.0
+New velocity = 0.9539016501527977
+
+
+Update position of particle 7
+Current position: 15
+Current velocity: 0.9539016501527977
+New position = 15 + 0.9539016501527977 = 15.953901650152797
+
+-----------End of Iteration #3
+
+-----------Iteration #4
+
+Local best of particle 1 = 11.179746055974096
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 16.651194254497714
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 15.478516373688747
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 13.512497238276172
+Final local best of particle is 11.179746055974096
+
+------ gBest update:
+f(11.179746055974096) = 4.504661429988862 < f(15) = 14.877158801178377, so gBest gets updated to 11.179746055974096
+------
+
+Local best of particle 2 = 11.919827045486773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 13.514148613679012
+Neighbor 1, 12.050881574782013
+Neighbor 2, 17.27230738925308
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.919827045486773
+
+------ gBest update:
+f(11.919827045486773) = 6.4095622200415985 < f(14.015463661686018) = 16.95589768796616, so gBest gets updated to 11.919827045486773
+------
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 10.126481986704219
+Neighbor 1, 14.815467466789519
+Neighbor 2, 15.672189554197644
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(15) = 14.877158801178377, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 10.954271214599203
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 15.42168342147108
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 13.029102571066312
+Neighbor 2, 17.20668638660996
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 10.954271214599203
+
+------ gBest update:
+f(10.954271214599203) = 4.527535571444789 < f(12.898982803112736) = 12.105843825632132, so gBest gets updated to 10.954271214599203
+------
+
+Local best of particle 5 = 11.350393327065843
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 17.842651416958148
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 16.224138853980428
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 15.053242476467343
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.350393327065843
+
+------ gBest update:
+f(11.350393327065843) = 4.678314891625237 < f(15) = 14.877158801178377, so gBest gets updated to 11.350393327065843
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 14.267813006061647
+Neighbor 1, 14.081585307375729
+Neighbor 2, 13.234570543768228
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(15) = 14.877158801178377, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 12.107187124966773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 16.044918085481186
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 14.597700726601897
+Neighbor 2, 13.164711869911137
+Final local best of particle is 12.107187124966773
+
+------ gBest update:
+f(12.107187124966773) = 7.316948522177219 < f(15) = 14.877158801178377, so gBest gets updated to 12.107187124966773
+------
+
+Update velocity of particle 1
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.10442422284151531 * (11.179746055974096 - 14.015463661686018) = -1.8884674875962555
+C2 * randomN * (gBest - position) = 3 * 0.29607267308315155 * (15 - 14.015463661686018) = 0.8744829162963557
+New velocity = 3.5783653091218857
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 1
+Current position: 14.015463661686018
+Current velocity: 3
+New position = 14.015463661686018 + 3 = 17.01546366168602
+
+Update velocity of particle 2
+Current velocity = 1.322223127479419
+C0 * self.velocity = 1 * 1.322223127479419 = 1.322223127479419
+C1 * randomN * (pBest - position) = 1 * 0.4997999222368016 * (11.919827045486773 - 15) = -1.0021208870174383
+C2 * randomN * (gBest - position) = 3 * 0.8716215074235552 * (15 - 15) = 0.0
+New velocity = -0.21724707566219115
+
+
+Update position of particle 2
+Current position: 15
+Current velocity: -0.21724707566219115
+New position = 15 + -0.21724707566219115 = 14.782752924337808
+
+Update velocity of particle 3
+Current velocity = -0.9556564385810448
+C0 * self.velocity = 1 * -0.9556564385810448 = -0.9556564385810448
+C1 * randomN * (pBest - position) = 1 * 0.8996782696347811 * (11.12894244897802 - 12.898982803112736) = -0.03202531117033422
+C2 * randomN * (gBest - position) = 3 * 0.2008530114407594 * (15 - 12.898982803112736) = 1.26598689325089
+New velocity = -1.2821363883218115
+
+
+Update position of particle 3
+Current position: 12.898982803112736
+Current velocity: -1.2821363883218115
+New position = 12.898982803112736 + -1.2821363883218115 = 11.616846414790924
+
+Update velocity of particle 4
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.3277407050962675 * (10.954271214599203 - 15) = -3.9933354564431527
+C2 * randomN * (gBest - position) = 3 * 0.7827003757293756 * (15 - 15) = 0.0
+New velocity = 1.6740499952444767
+
+
+Update position of particle 4
+Current position: 15
+Current velocity: 1.6740499952444767
+New position = 15 + 1.6740499952444767 = 16.674049995244477
+
+Update velocity of particle 5
+Current velocity = 2.775087703317833
+C0 * self.velocity = 1 * 2.775087703317833 = 2.775087703317833
+C1 * randomN * (pBest - position) = 1 * 0.3390956478509337 * (11.350393327065843 - 15) = -0.7774749664052226
+C2 * randomN * (gBest - position) = 3 * 0.6744550697237632 * (15 - 15) = 0.0
+New velocity = 1.5375219641581344
+
+
+Update position of particle 5
+Current position: 15
+Current velocity: 1.5375219641581344
+New position = 15 + 1.5375219641581344 = 16.537521964158135
+
+Update velocity of particle 6
+Current velocity = 1.9600944141508259
+C0 * self.velocity = 1 * 1.9600944141508259 = 1.9600944141508259
+C1 * randomN * (pBest - position) = 1 * 0.8377010701539643 * (11.517465284392213 - 15) = -3.2463752323242154
+C2 * randomN * (gBest - position) = 3 * 0.3438498147908198 * (15 - 15) = 0.0
+New velocity = -0.9572286439621496
+
+
+Update position of particle 6
+Current position: 15
+Current velocity: -0.9572286439621496
+New position = 15 + -0.9572286439621496 = 14.04277135603785
+
+Update velocity of particle 7
+Current velocity = 0.9539016501527977
+C0 * self.velocity = 1 * 0.9539016501527977 = 0.9539016501527977
+C1 * randomN * (pBest - position) = 1 * 0.8823932024664636 * (12.107187124966773 - 15) = -1.9876811815005262
+C2 * randomN * (gBest - position) = 3 * 0.48449872261249405 * (15 - 15) = 0.0
+New velocity = -1.5986967667839893
+
+
+Update position of particle 7
+Current position: 15
+Current velocity: -1.5986967667839893
+New position = 15 + -1.5986967667839893 = 13.40130323321601
+
+-----------End of Iteration #4
+
+-----------Iteration #5
+
+Local best of particle 1 = 11.179746055974096
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 17.91304937895479
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 13.40784260922623
+Neighbor 2, 16.352791117447634
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.179746055974096
+
+------ gBest update:
+f(11.179746055974096) = 4.504661429988862 < f(15) = 14.877158801178377, so gBest gets updated to 11.179746055974096
+------
+
+Local best of particle 2 = 11.919827045486773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 12.290834306836713
+Neighbor 1, 12.800917775104134
+Neighbor 2, 17.248679625386213
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.919827045486773
+
+------ gBest update:
+f(11.919827045486773) = 6.4095622200415985 < f(15) = 14.877158801178377, so gBest gets updated to 11.919827045486773
+------
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.89465558473947
+Neighbor 1, 13.171543511089565
+Neighbor 2, 12.21809939558442
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(14.782752924337808) = 15.903842270298327, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 10.954271214599203
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 17.04679317423513
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 14.208647996433895
+Neighbor 2, 14.041711410011928
+Final local best of particle is 10.954271214599203
+
+------ gBest update:
+f(10.954271214599203) = 4.527535571444789 < f(11.616846414790924) = 5.276946608091348, so gBest gets updated to 10.954271214599203
+------
+
+Local best of particle 5 = 11.350393327065843
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 13.747291724466809
+Neighbor 1, 17.204518941521417
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 15.623895173350267
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.350393327065843
+
+------ gBest update:
+f(11.350393327065843) = 4.678314891625237 < f(15) = 14.877158801178377, so gBest gets updated to 11.350393327065843
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 16.76861609907099
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 1, 16.366361984339626
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 11.854847220410567
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(15) = 14.877158801178377, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 12.107187124966773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 13.70832607763131
+Neighbor 1, 11.026953221303692
+f(11.026953221303692) = 4.4892375544966665 is lower than f(13.40130323321601) = 14.966866623327, so the new local best will be 11.026953221303692
+Neighbor 2, 10.636130024797474
+Final local best of particle is 11.026953221303692
+
+------ gBest update:
+f(11.026953221303692) = 4.4892375544966665 < f(14.04277135603785) = 16.990126777930257, so gBest gets updated to 11.026953221303692
+------
+
+Update velocity of particle 1
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.07319341883234853 * (11.179746055974096 - 15) = -3.3089830834200855
+C2 * randomN * (gBest - position) = 3 * 0.7881164487252263 * (13.40130323321601 - 15) = -3.7798776552788977
+New velocity = -1.059495102249917
+
+
+Update position of particle 1
+Current position: 15
+Current velocity: -1.059495102249917
+New position = 15 + -1.059495102249917 = 13.940504897750083
+
+Update velocity of particle 2
+Current velocity = -0.21724707566219115
+C0 * self.velocity = 1 * -0.21724707566219115 = -0.21724707566219115
+C1 * randomN * (pBest - position) = 1 * 0.8285059714691135 * (11.919827045486773 - 14.782752924337808) = -0.9759641720540587
+C2 * randomN * (gBest - position) = 3 * 0.6151860325590366 * (13.40130323321601 - 14.782752924337808) = -2.5495456639833765
+New velocity = -5.138743926147111
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 2
+Current position: 14.782752924337808
+Current velocity: -3
+New position = 14.782752924337808 + -3 = 11.782752924337808
+
+Update velocity of particle 3
+Current velocity = -1.2821363883218115
+C0 * self.velocity = 1 * -1.2821363883218115 = -1.2821363883218115
+C1 * randomN * (pBest - position) = 1 * 0.7819036016327547 * (11.12894244897802 - 11.616846414790924) = -0.18444703414468766
+C2 * randomN * (gBest - position) = 3 * 0.5707815255990233 * (13.40130323321601 - 11.616846414790924) = 3.0556049555587506
+New velocity = 1.3919746991169246
+
+
+Update position of particle 3
+Current position: 11.616846414790924
+Current velocity: 1.3919746991169246
+New position = 11.616846414790924 + 1.3919746991169246 = 13.00882111390785
+
+Update velocity of particle 4
+Current velocity = 1.6740499952444767
+C0 * self.velocity = 1 * 1.6740499952444767 = 1.6740499952444767
+C1 * randomN * (pBest - position) = 1 * 0.2237140727487692 * (10.954271214599203 - 15) = -0.3307110695116485
+C2 * randomN * (gBest - position) = 3 * 0.26672364298173634 * (13.40130323321601 - 15) = -1.2792306769792472
+New velocity = -0.5102671455537141
+
+
+Update position of particle 4
+Current position: 15
+Current velocity: -0.5102671455537141
+New position = 15 + -0.5102671455537141 = 14.489732854446286
+
+Update velocity of particle 5
+Current velocity = 1.5375219641581344
+C0 * self.velocity = 1 * 1.5375219641581344 = 1.5375219641581344
+C1 * randomN * (pBest - position) = 1 * 0.8907681278553053 * (11.350393327065843 - 15) = -2.0600089291099777
+C2 * randomN * (gBest - position) = 3 * 0.9250672021084733 * (13.40130323321601 - 15) = -4.436705835206182
+New velocity = -6.150137174505836
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 5
+Current position: 15
+Current velocity: -3
+New position = 15 + -3 = 12
+
+Update velocity of particle 6
+Current velocity = -0.9572286439621496
+C0 * self.velocity = 1 * -0.9572286439621496 = -0.9572286439621496
+C1 * randomN * (pBest - position) = 1 * 0.4577692590412453 * (11.517465284392213 - 14.04277135603785) = -0.6999713222073032
+C2 * randomN * (gBest - position) = 3 * 0.7870146635603288 * (13.40130323321601 - 14.04277135603785) = -1.5145344566019172
+New velocity = -3.6277705898336485
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 6
+Current position: 14.04277135603785
+Current velocity: -3
+New position = 14.04277135603785 + -3 = 11.04277135603785
+
+Update velocity of particle 7
+Current velocity = -1.5986967667839893
+C0 * self.velocity = 1 * -1.5986967667839893 = -1.5986967667839893
+C1 * randomN * (pBest - position) = 1 * 0.8277681566457297 * (11.026953221303692 - 13.40130323321601) = -0.029398595169412175
+C2 * randomN * (gBest - position) = 3 * 0.670411639023931 * (13.40130323321601 - 13.40130323321601) = 0.0
+New velocity = -3.564108099376415
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 7
+Current position: 13.40130323321601
+Current velocity: -3
+New position = 13.40130323321601 + -3 = 10.40130323321601
+
+-----------End of Iteration #5
+
+-----------Iteration #6
+
+Local best of particle 1 = 11.179746055974096
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 11.49060363344919
+Neighbor 1, 11.631119888317647
+Neighbor 2, 16.250865320028048
+Position is higher than upper bound 15, so we transform it to 15
+Final local best of particle is 11.179746055974096
+
+------ gBest update:
+f(11.179746055974096) = 4.504661429988862 < f(13.40130323321601) = 14.966866623327, so gBest gets updated to 11.179746055974096
+------
+
+Local best of particle 2 = 11.919827045486773
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.022894145678796
+Neighbor 1, 10.220553113542865
+f(10.220553113542865) = 6.349186651669548 is lower than f(11.782752924337808) = 5.841591505583936, so the new local best will be 10.220553113542865
+Neighbor 2, 14.711703915974004
+Final local best of particle is 10.220553113542865
+
+------ gBest update:
+f(10.220553113542865) = 6.349186651669548 < f(13.940504897750083) = 16.835895718775713, so gBest gets updated to 10.220553113542865
+------
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 12.534902638489452
+Neighbor 1, 10.70217019746149
+Neighbor 2, 11.01312173867584
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(11.782752924337808) = 5.841591505583936, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 10.954271214599203
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 12.938254565033345
+Neighbor 1, 15.953771353668337
+Position is higher than upper bound 15, so we transform it to 15
+Neighbor 2, 12.106737730364145
+Final local best of particle is 10.954271214599203
+
+------ gBest update:
+f(10.954271214599203) = 4.527535571444789 < f(13.00882111390785) = 12.784897707103134, so gBest gets updated to 10.954271214599203
+------
+
+Local best of particle 5 = 11.350393327065843
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 14.464586509676
+Neighbor 1, 11.269663623265357
+f(11.269663623265357) = 4.575504702137802 is lower than f(12) = 6.78056249199739, so the new local best will be 11.269663623265357
+Neighbor 2, 14.821584219169264
+Final local best of particle is 11.269663623265357
+
+------ gBest update:
+f(11.269663623265357) = 4.575504702137802 < f(14.489732854446286) = 16.799233066082905, so gBest gets updated to 11.269663623265357
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 13.498107724942118
+Neighbor 1, 9.806912865729137
+Neighbor 2, 9.56323217228461
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(12) = 6.78056249199739, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 11.026953221303692
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 10.263363809049618
+Neighbor 1, 8.002078096918723
+Neighbor 2, 11.313604430152514
+Final local best of particle is 11.026953221303692
+
+Update velocity of particle 1
+Current velocity = -1.059495102249917
+C0 * self.velocity = 1 * -1.059495102249917 = -1.059495102249917
+C1 * randomN * (pBest - position) = 1 * 0.039620213413704475 * (11.179746055974096 - 13.940504897750083) = -0.02900495069821274
+C2 * randomN * (gBest - position) = 3 * 0.9825836265504634 * (11.04277135603785 - 13.940504897750083) = -8.541796596577573
+New velocity = -9.710673553322426
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 1
+Current position: 13.940504897750083
+Current velocity: -3
+New position = 13.940504897750083 + -3 = 10.940504897750083
+
+Update velocity of particle 2
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.2955498600489178 * (10.220553113542865 - 11.782752924337808) = -0.931962545914801
+C2 * randomN * (gBest - position) = 3 * 0.44984453463009777 * (11.04277135603785 - 11.782752924337808) = -0.9986299926802342
+New velocity = -4.4603379281291256
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 2
+Current position: 11.782752924337808
+Current velocity: -3
+New position = 11.782752924337808 + -3 = 8.782752924337808
+
+Update velocity of particle 3
+Current velocity = 1.3919746991169246
+C0 * self.velocity = 1 * 1.3919746991169246 = 1.3919746991169246
+C1 * randomN * (pBest - position) = 1 * 0.31328086106892794 * (11.12894244897802 - 13.00882111390785) = -0.11836616545235454
+C2 * randomN * (gBest - position) = 3 * 0.9133920171659404 * (11.04277135603785 - 13.00882111390785) = -5.387322462568463
+New velocity = -4.584277770305862
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 3
+Current position: 13.00882111390785
+Current velocity: -3
+New position = 13.00882111390785 + -3 = 10.00882111390785
+
+Update velocity of particle 4
+Current velocity = -0.5102671455537141
+C0 * self.velocity = 1 * -0.5102671455537141 = -0.5102671455537141
+C1 * randomN * (pBest - position) = 1 * 0.9698132768381156 * (10.954271214599203 - 14.489732854446286) = -3.428678340105059
+C2 * randomN * (gBest - position) = 3 * 0.1113623101268919 * (11.04277135603785 - 14.489732854446286) = -1.1515847861436488
+New velocity = -5.090589569772921
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 4
+Current position: 14.489732854446286
+Current velocity: -3
+New position = 14.489732854446286 + -3 = 11.489732854446286
+
+Update velocity of particle 5
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.21519327003609845 * (11.269663623265357 - 12) = -0.45120683826937386
+C2 * randomN * (gBest - position) = 3 * 0.979952885890077 * (11.04277135603785 - 12) = -2.814116916322062
+New velocity = -5.971280389457906
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 5
+Current position: 12
+Current velocity: -3
+New position = 12 + -3 = 9
+
+Update velocity of particle 6
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.5429131974847156 * (11.517465284392213 - 11.04277135603785) = 0.32667952343560336
+C2 * randomN * (gBest - position) = 3 * 0.6618344288753493 * (11.04277135603785 - 11.04277135603785) = 0.0
+New velocity = -2.7422824015305527
+
+
+Update position of particle 6
+Current position: 11.04277135603785
+Current velocity: -2.7422824015305527
+New position = 11.04277135603785 + -2.7422824015305527 = 8.300488954507298
+
+Update velocity of particle 7
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.259085991853645 * (11.026953221303692 - 10.40130323321601) = 0.33885344933975853
+C2 * randomN * (gBest - position) = 3 * 0.3073211178125135 * (11.04277135603785 - 10.40130323321601) = 0.5914101016401072
+New velocity = -2.2464927506429744
+
+
+Update position of particle 7
+Current position: 10.40130323321601
+Current velocity: -2.2464927506429744
+New position = 10.40130323321601 + -2.2464927506429744 = 8.154810482573037
+
+-----------End of Iteration #6
+
+-----------Iteration #7
+
+Local best of particle 1 = 11.179746055974096
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.418792074260637
+Neighbor 1, 8.42871749005281
+Neighbor 2, 9.625225239138135
+Final local best of particle is 11.179746055974096
+
+Local best of particle 2 = 10.220553113542865
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 11.683013227654223
+f(11.683013227654223) = 5.485253206230521 is lower than f(8.782752924337808) = 12.629637417278737, so the new local best will be 11.683013227654223
+Neighbor 1, 8.470166367537582
+Neighbor 2, 9.694816131413832
+Final local best of particle is 11.683013227654223
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 10.8696175955269
+Neighbor 1, 12.653228247401849
+Neighbor 2, 9.351692420741388
+Final local best of particle is 11.12894244897802
+
+Local best of particle 4 = 10.954271214599203
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 10.330438623555368
+Neighbor 1, 10.453181342569085
+Neighbor 2, 10.3901437357599
+Final local best of particle is 10.954271214599203
+
+Local best of particle 5 = 11.269663623265357
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 11.08280859495729
+f(11.08280859495729) = 4.479666891876775 is lower than f(9) = 11.854533183587904, so the new local best will be 11.08280859495729
+Neighbor 1, 11.361001473129607
+Neighbor 2, 7.816855978035098
+Final local best of particle is 11.08280859495729
+
+------ gBest update:
+f(11.08280859495729) = 4.479666891876775 < f(11.04277135603785) = 4.484762798485402, so gBest gets updated to 11.08280859495729
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 7.306489388411869
+Neighbor 1, 8.565841439600403
+Neighbor 2, 8.7744015724098
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(9) = 11.854533183587904, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 11.026953221303692
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.730585722579063
+Neighbor 1, 6.625398505944529
+Neighbor 2, 5.277054653250551
+Final local best of particle is 11.026953221303692
+
+------ gBest update:
+f(11.026953221303692) = 4.4892375544966665 < f(8.300488954507298) = 13.743357838311876, so gBest gets updated to 11.026953221303692
+------
+
+Update velocity of particle 1
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.24375929982791578 * (11.179746055974096 - 10.940504897750083) = 0.01730372297488289
+C2 * randomN * (gBest - position) = 3 * 0.551204754915506 * (8.154810482573037 - 10.940504897750083) = -4.6064640221614725
+New velocity = -7.548146764942768
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 1
+Current position: 10.940504897750083
+Current velocity: -3
+New position = 10.940504897750083 + -3 = 7.940504897750083
+
+Update velocity of particle 2
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.07091636753953445 * (11.683013227654223 - 8.782752924337808) = 0.21789595407220208
+C2 * randomN * (gBest - position) = 3 * 0.6353820935630572 * (8.154810482573037 - 8.782752924337808) = -1.1969501498567958
+New velocity = -3.991274224226487
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 2
+Current position: 8.782752924337808
+Current velocity: -3
+New position = 8.782752924337808 + -3 = 5.782752924337808
+
+Update velocity of particle 3
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.2908215504193956 * (11.12894244897802 - 10.00882111390785) = 0.8873430486213527
+C2 * randomN * (gBest - position) = 3 * 0.49326104275013793 * (8.154810482573037 - 10.00882111390785) = -2.7435336518461533
+New velocity = -5.417778228523203
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 3
+Current position: 10.00882111390785
+Current velocity: -3
+New position = 10.00882111390785 + -3 = 7.00882111390785
+
+Update velocity of particle 4
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.8626489777797094 * (10.954271214599203 - 11.489732854446286) = -0.08255725939231758
+C2 * randomN * (gBest - position) = 3 * 0.5014295859466933 * (8.154810482573037 - 11.489732854446286) = -5.016686232278303
+New velocity = -8.478601668532637
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 4
+Current position: 11.489732854446286
+Current velocity: -3
+New position = 11.489732854446286 + -3 = 8.489732854446286
+
+Update velocity of particle 5
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.794983493746024 * (11.08280859495729 - 9) = 0.1605990937217382
+C2 * randomN * (gBest - position) = 3 * 0.9492279489729363 * (8.154810482573037 - 9) = -2.4068325363618657
+New velocity = -3.751034082738472
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 5
+Current position: 9
+Current velocity: -3
+New position = 9 + -3 = 6
+
+Update velocity of particle 6
+Current velocity = -2.7422824015305527
+C0 * self.velocity = 1 * -2.7422824015305527 = -2.7422824015305527
+C1 * randomN * (pBest - position) = 1 * 0.1732421083716036 * (11.517465284392213 - 8.300488954507298) = 2.497045925309797
+C2 * randomN * (gBest - position) = 3 * 0.9848958711440725 * (8.154810482573037 - 8.300488954507298) = -0.43043437656789324
+New velocity = -2.61540101612764
+
+
+Update position of particle 6
+Current position: 8.300488954507298
+Current velocity: -2.61540101612764
+New position = 8.300488954507298 + -2.61540101612764 = 5.685087938379658
+
+Update velocity of particle 7
+Current velocity = -2.2464927506429744
+C0 * self.velocity = 1 * -2.2464927506429744 = -2.2464927506429744
+C1 * randomN * (pBest - position) = 1 * 0.8215501447435144 * (11.026953221303692 - 8.154810482573037) = 0.918465301584155
+C2 * randomN * (gBest - position) = 3 * 0.1068777345815598 * (8.154810482573037 - 8.154810482573037) = 0.0
+New velocity = 0.11311653208522943
+
+
+Update position of particle 7
+Current position: 8.154810482573037
+Current velocity: 0.11311653208522943
+New position = 8.154810482573037 + 0.11311653208522943 = 8.267927014658266
+
+-----------End of Iteration #7
+
+-----------Iteration #8
+
+Local best of particle 1 = 11.179746055974096
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.02665440408158
+Neighbor 1, 10.456646533014212
+Neighbor 2, 6.70144186397409
+Final local best of particle is 11.179746055974096
+
+------ gBest update:
+f(11.179746055974096) = 4.504661429988862 < f(8.154810482573037) = 13.894293944260264, so gBest gets updated to 11.179746055974096
+------
+
+Local best of particle 2 = 11.683013227654223
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.145305710512547
+Neighbor 1, 3.632836806497978
+Neighbor 2, 8.245642970694213
+Final local best of particle is 11.683013227654223
+
+------ gBest update:
+f(11.683013227654223) = 5.485253206230521 < f(7.940504897750083) = 13.955400516643207, so gBest gets updated to 11.683013227654223
+------
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 4.19938078929187
+Neighbor 1, 5.905233180473147
+Neighbor 2, 9.427350816192524
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(5.782752924337808) = 8.612703274383547, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 10.954271214599203
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 10.312870540350119
+Neighbor 1, 10.93265545642707
+Neighbor 2, 10.534043987926713
+Final local best of particle is 10.954271214599203
+
+------ gBest update:
+f(10.954271214599203) = 4.527535571444789 < f(7.00882111390785) = 12.325566128507507, so gBest gets updated to 10.954271214599203
+------
+
+Local best of particle 5 = 11.08280859495729
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 7.4771093124271335
+Neighbor 1, 7.137571075801588
+Neighbor 2, 4.068929193865942
+Final local best of particle is 11.08280859495729
+
+------ gBest update:
+f(11.08280859495729) = 4.479666891876775 < f(8.489732854446286) = 13.415529309179755, so gBest gets updated to 11.08280859495729
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 5.28091594423708
+Neighbor 1, 3.6324696008926214
+Neighbor 2, 6.974034650192525
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(6) = 9.161753505403222, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 11.026953221303692
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.274599452771518
+Neighbor 1, 6.783445461421566
+Neighbor 2, 5.654412174744234
+Final local best of particle is 11.026953221303692
+
+------ gBest update:
+f(11.026953221303692) = 4.4892375544966665 < f(5.685087938379658) = 8.39944551810726, so gBest gets updated to 11.026953221303692
+------
+
+Update velocity of particle 1
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.9633858833215757 * (11.179746055974096 - 7.940504897750083) = 2.6181251800666048
+C2 * randomN * (gBest - position) = 3 * 0.5492699313925192 * (8.267927014658266 - 7.940504897750083) = 0.5395293710716532
+New velocity = 0.6601685755788983
+
+
+Update position of particle 1
+Current position: 7.940504897750083
+Current velocity: 0.6601685755788983
+New position = 7.940504897750083 + 0.6601685755788983 = 8.600673473328982
+
+Update velocity of particle 2
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.5413776519849807 * (11.683013227654223 - 5.782752924337808) = 5.022848325659427
+C2 * randomN * (gBest - position) = 3 * 0.45330967762221785 * (8.267927014658266 - 5.782752924337808) = 3.3796603971547654
+New velocity = 3.573929466264396
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 2
+Current position: 5.782752924337808
+Current velocity: 3
+New position = 5.782752924337808 + 3 = 8.782752924337808
+
+Update velocity of particle 3
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.39571044472076744 * (11.12894244897802 - 7.00882111390785) = 1.3953579694121026
+C2 * randomN * (gBest - position) = 3 * 0.2579690924717717 * (8.267927014658266 - 7.00882111390785) = 0.9744312196273126
+New velocity = -0.39519373456854834
+
+
+Update position of particle 3
+Current position: 7.00882111390785
+Current velocity: -0.39519373456854834
+New position = 7.00882111390785 + -0.39519373456854834 = 6.6136273793393014
+
+Update velocity of particle 4
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.024408502825104206 * (10.954271214599203 - 8.489732854446286) = 1.5931733285311458
+C2 * randomN * (gBest - position) = 3 * 0.4166838822984099 * (8.267927014658266 - 8.489732854446286) = -0.2772687553179942
+New velocity = -3.217113063791624
+Velocity is higher than minVelocity -3, so it gets updated to -3
+
+
+Update position of particle 4
+Current position: 8.489732854446286
+Current velocity: -3
+New position = 8.489732854446286 + -3 = 5.489732854446286
+
+Update velocity of particle 5
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.5706036315777225 * (11.08280859495729 - 6) = 0.3167689206998918
+C2 * randomN * (gBest - position) = 3 * 0.3549434436862958 * (8.267927014658266 - 6) = 2.414957473835956
+New velocity = 2.3152265167330475
+
+
+Update position of particle 5
+Current position: 6
+Current velocity: 2.3152265167330475
+New position = 6 + 2.3152265167330475 = 8.315226516733048
+
+Update velocity of particle 6
+Current velocity = -2.61540101612764
+C0 * self.velocity = 1 * -2.61540101612764 = -2.61540101612764
+C1 * randomN * (pBest - position) = 1 * 0.13828411395509788 * (11.517465284392213 - 5.685087938379658) = 0.7297996340799526
+C2 * randomN * (gBest - position) = 3 * 0.259112968915828 * (8.267927014658266 - 5.685087938379658) = 2.007741303859095
+New velocity = 0.19886542127658657
+
+
+Update position of particle 6
+Current position: 5.685087938379658
+Current velocity: 0.19886542127658657
+New position = 5.685087938379658 + 0.19886542127658657 = 5.883953359656244
+
+Update velocity of particle 7
+Current velocity = 0.11311653208522943
+C0 * self.velocity = 1 * 0.11311653208522943 = 0.11311653208522943
+C1 * randomN * (pBest - position) = 1 * 0.8289343809851581 * (11.026953221303692 - 8.267927014658266) = 1.097533211679119
+C2 * randomN * (gBest - position) = 3 * 0.40108215192090135 * (8.267927014658266 - 8.267927014658266) = 0.0
+New velocity = 2.400168212812685
+
+
+Update position of particle 7
+Current position: 8.267927014658266
+Current velocity: 2.400168212812685
+New position = 8.267927014658266 + 2.400168212812685 = 10.668095227470952
+
+-----------End of Iteration #8
+
+-----------Iteration #9
+
+Local best of particle 1 = 11.179746055974096
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 9.275343011286616
+Neighbor 1, 7.001851393104081
+Neighbor 2, 5.6455365115817875
+Final local best of particle is 11.179746055974096
+
+------ gBest update:
+f(11.179746055974096) = 4.504661429988862 < f(8.267927014658266) = 13.7848131801915, so gBest gets updated to 11.179746055974096
+------
+
+Local best of particle 2 = 11.683013227654223
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.954963363658088
+Neighbor 1, 8.788150641681169
+Neighbor 2, 9.675790478382929
+Final local best of particle is 11.683013227654223
+
+------ gBest update:
+f(11.683013227654223) = 5.485253206230521 < f(8.600673473328982) = 13.156188419944066, so gBest gets updated to 11.683013227654223
+------
+
+Local best of particle 3 = 11.12894244897802
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 6.243529113189597
+Neighbor 1, 7.732706163288506
+Neighbor 2, 8.002159074305734
+Final local best of particle is 11.12894244897802
+
+------ gBest update:
+f(11.12894244897802) = 4.48494327520336 < f(8.782752924337808) = 12.629637417278737, so gBest gets updated to 11.12894244897802
+------
+
+Local best of particle 4 = 10.954271214599203
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 3.919980905418429
+Neighbor 1, 5.4601663587423515
+Neighbor 2, 5.362694179937046
+Final local best of particle is 10.954271214599203
+
+------ gBest update:
+f(10.954271214599203) = 4.527535571444789 < f(6.6136273793393014) = 11.072932789842708, so gBest gets updated to 10.954271214599203
+------
+
+Local best of particle 5 = 11.08280859495729
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 6.66559902696565
+Neighbor 1, 7.788703314237093
+Neighbor 2, 8.677671123660982
+Final local best of particle is 11.08280859495729
+
+------ gBest update:
+f(11.08280859495729) = 4.479666891876775 < f(5.489732854446286) = 8.043516779375702, so gBest gets updated to 11.08280859495729
+------
+
+Local best of particle 6 = 11.517465284392213
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 8.325590386691335
+Neighbor 1, 8.390192862685577
+Neighbor 2, 4.535305540451039
+Final local best of particle is 11.517465284392213
+
+------ gBest update:
+f(11.517465284392213) = 5.007881192586633 < f(8.315226516733048) = 13.723139097333137, so gBest gets updated to 11.517465284392213
+------
+
+Local best of particle 7 = 11.026953221303692
+Calculate 3 neighbors between current position and += 3
+Neighbor 0, 11.546586281326483
+Neighbor 1, 7.957279287639374
+Neighbor 2, 8.097403556838334
+Final local best of particle is 11.026953221303692
+
+------ gBest update:
+f(11.026953221303692) = 4.4892375544966665 < f(5.883953359656244) = 8.85642187843221, so gBest gets updated to 11.026953221303692
+------
+
+Update velocity of particle 1
+Current velocity = 0.6601685755788983
+C0 * self.velocity = 1 * 0.6601685755788983 = 0.6601685755788983
+C1 * randomN * (pBest - position) = 1 * 0.5116917092002066 * (11.179746055974096 - 8.600673473328982) = 2.262940385363527
+C2 * randomN * (gBest - position) = 3 * 0.15946773075783105 * (10.668095227470952 - 8.600673473328982) = 0.9890611669571833
+New velocity = 2.9689198005011512
+
+
+Update position of particle 1
+Current position: 8.600673473328982
+Current velocity: 2.9689198005011512
+New position = 8.600673473328982 + 2.9689198005011512 = 11.569593273830133
+
+Update velocity of particle 2
+Current velocity = 3
+C0 * self.velocity = 1 * 3 = 3
+C1 * randomN * (pBest - position) = 1 * 0.7660278587973122 * (11.683013227654223 - 8.782752924337808) = 2.5609576015084192
+C2 * randomN * (gBest - position) = 3 * 0.3118020318353023 * (10.668095227470952 - 8.782752924337808) = 1.7635606824658874
+New velocity = 6.985240872570204
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 2
+Current position: 8.782752924337808
+Current velocity: 3
+New position = 8.782752924337808 + 3 = 11.782752924337808
+
+Update velocity of particle 3
+Current velocity = -0.39519373456854834
+C0 * self.velocity = 1 * -0.39519373456854834 = -0.39519373456854834
+C1 * randomN * (pBest - position) = 1 * 0.6925569646028146 * (11.12894244897802 - 6.6136273793393014) = 3.8334624093531233
+C2 * randomN * (gBest - position) = 3 * 0.3716143307475649 * (10.668095227470952 - 6.6136273793393014) = 4.520095067762887
+New velocity = 7.252014232048676
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 3
+Current position: 6.6136273793393014
+Current velocity: 3
+New position = 6.6136273793393014 + 3 = 9.613627379339302
+
+Update velocity of particle 4
+Current velocity = -3
+C0 * self.velocity = 1 * -3 = -3
+C1 * randomN * (pBest - position) = 1 * 0.7012826629078087 * (10.954271214599203 - 5.489732854446286) = 4.024185047137388
+C2 * randomN * (gBest - position) = 3 * 0.5945778048409015 * (10.668095227470952 - 5.489732854446286) = 9.23681799727118
+New velocity = 10.069004010041088
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 4
+Current position: 5.489732854446286
+Current velocity: 3
+New position = 5.489732854446286 + 3 = 8.489732854446286
+
+Update velocity of particle 5
+Current velocity = 2.3152265167330475
+C0 * self.velocity = 1 * 2.3152265167330475 = 2.3152265167330475
+C1 * randomN * (pBest - position) = 1 * 0.8562771389130047 * (11.08280859495729 - 8.315226516733048) = 2.4814261887591242
+C2 * randomN * (gBest - position) = 3 * 0.9600788169648591 * (10.668095227470952 - 8.315226516733048) = 6.776818224836638
+New velocity = 11.461862005218446
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 5
+Current position: 8.315226516733048
+Current velocity: 3
+New position = 8.315226516733048 + 3 = 11.315226516733048
+
+Update velocity of particle 6
+Current velocity = 0.19886542127658657
+C0 * self.velocity = 1 * 0.19886542127658657 = 0.19886542127658657
+C1 * randomN * (pBest - position) = 1 * 0.5712326942175455 * (11.517465284392213 - 5.883953359656244) = 0.9930523576891868
+C2 * randomN * (gBest - position) = 3 * 0.2505954088773793 * (10.668095227470952 - 5.883953359656244) = 3.596651962477247
+New velocity = 7.013563578427431
+Velocity is higher than maxVelocity 3, so it gets updated to 3
+
+
+Update position of particle 6
+Current position: 5.883953359656244
+Current velocity: 3
+New position = 5.883953359656244 + 3 = 8.883953359656244
+
+Update velocity of particle 7
+Current velocity = 2.400168212812685
+C0 * self.velocity = 1 * 2.400168212812685 = 2.400168212812685
+C1 * randomN * (pBest - position) = 1 * 0.21761868850658306 * (11.026953221303692 - 10.668095227470952) = 0.20437585352960425
+C2 * randomN * (gBest - position) = 3 * 0.7577501146664367 * (10.668095227470952 - 10.668095227470952) = 0.0
+New velocity = 2.4782624187906697
+
+
+Update position of particle 7
+Current position: 10.668095227470952
+Current velocity: 2.4782624187906697
+New position = 10.668095227470952 + 2.4782624187906697 = 13.14635764626162
+
+-----------End of Iteration #9
+
+Final particles [ID: 1, Position: 11.569593273830133, Velocity: 2.9689198005011512, Pbest: 11.179746055974096
+, ID: 2, Position: 11.782752924337808, Velocity: 3, Pbest: 11.683013227654223
+, ID: 3, Position: 9.613627379339302, Velocity: 3, Pbest: 11.12894244897802
+, ID: 4, Position: 8.489732854446286, Velocity: 3, Pbest: 10.954271214599203
+, ID: 5, Position: 11.315226516733048, Velocity: 3, Pbest: 11.08280859495729
+, ID: 6, Position: 8.883953359656244, Velocity: 3, Pbest: 11.517465284392213
+, ID: 7, Position: 13.14635764626162, Velocity: 2.4782624187906697, Pbest: 11.026953221303692
+]
+
+Best particle : ID: 5, Position: 11.315226516733048, Velocity: 3, Pbest: 11.08280859495729
+
+Fitness of best particle = 4.628974511781118
