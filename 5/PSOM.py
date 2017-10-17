@@ -1,24 +1,32 @@
+# Miryam Elizabeth Villa Perez - A01371614
+# Kevin Islas Abud - A01372023
+# Intelligent Systems Course
+# Code for assignment 5 (PSO)
+
 import math
 import random
 import copy
 import matplotlib.pyplot as plt
 
-# random.seed(1)
+# random.seed(99) #For debugging
 
 def f(x, a):
 	return (a[0]/x) + (a[1] * math.exp(a[2]/x)) + a[3]*math.sin(x)
 
+#Parametrization values
 minX = 0
 maxX = 15
-numParticles = 20
-maxIterations = 100
+numParticles = 10
+maxIterations = 50
 maxVelocity = 3
 C0 = 1
 C1 = 2
 C2 = 4-C1
-
 x = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 y = [26, -1, 4, 20, 0, -2, 19, 1, -4, 19]
+neighborCount = 3
+neighborSize = 2
+# -------------------
 
 class Particle(object):
 	counter = 0
@@ -38,10 +46,10 @@ class Particle(object):
 
 	def getLocalBest(self):
 		# Calculate 3 neighbors between current position and +- 1
-		for i in range(3):
+		for i in range(neighborCount):
 			neighbor = copy.deepcopy(self)
 			for j in range(len(neighbor.a)):
-				neighbor.a[j] += random.random()*2 - 1
+				neighbor.a[j] += random.random()*neighborSize - (neighborSize/2.0) #2.0 to ensure float division
 				if(neighbor.a[j] < minX):
 					neighbor.a[j] = minX
 				elif(neighbor.a[j] > maxX):
@@ -105,19 +113,26 @@ class PSO():
 
 	# Sort by position
 	particles = sorted(particles, key=lambda particle: particle.position())
-	# plt.axis([min(x), min(y), max(x), max(y)])
 	plt.axis([min(x)-3,max(x)+3,min(y)-3,max(y)+3])
 	print(gBest[0])
 	yArr = []
 	for i in x:
 		yArr.append(f(i, gBest[0]))
-	# plt.plot(x, y, "g")
+
+	# Line plot
+	# plt.plot(x, y, "g") 	
 	# plt.plot(x, yArr, "r")
+	
+	# X and 0 plot
 	plt.plot(x, y, "go")
 	plt.plot(x, yArr, "rx")
 
 problem = PSO()
 
 print("--- END ---")
-print("Global Best {} Position {}".format(problem.gBest[0], problem.gBest[1]))
+print("Global Best")
+for n in range(len(problem.gBest[0])):
+	print("A{0}: {1:.2f}".format(n, problem.gBest[0][n]))
+
+print("Error: {0:.2f}".format(problem.gBest[1]))
 plt.show()
