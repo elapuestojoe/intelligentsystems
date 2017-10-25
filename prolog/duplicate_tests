@@ -6,14 +6,21 @@ duplicate_entries([[a,b],b,c,[a,b]]).
 
 splice([a,b,c],x,0,R).
 splice([a,b,c],x,2,R).
+splice([a b c],x,5,R).
 
 remove_dups([a,b,[a],c,d], R).
 remove_dups([[a,b],b,c,[a,b],[a,b]], R).
 
----LISTO
 flatten2([1,2,[[3,4],5]], R).
 flatten2([a,[b,c],[[[d],e,f]]], R).
----LISTO
 
 find_zero([a,[b,0],c]).
 find_zero([a,[b,c],d]).
+
+insert(a,[1,2,3],R).
+insert(5,[a,[b,[c],d]],R).
+
+leaves(tree(8, tree(5, tree(2,nil,nil), tree(7,nil,nil)),tree(9, nil, tree(15, tree(11, nil, nil), nil))), L).
+
+increase(tree(8,tree(5,tree(2,nil,nil),tree(7,nil,nil)), tree(9, nil, tree(15, tree(11, nil, nil), nil))),A).
+increase(tree(1,nil,nil), A).
