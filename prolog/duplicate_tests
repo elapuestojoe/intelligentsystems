@@ -1,10 +1,19 @@
+---LISTO
 duplicate_entries([a,b,a,c,d]).
 duplicate_entries([a,b,[a],c,d]).
 duplicate_entries([[a,b],b,c,[a,b]]).
+---LISTO
 
 splice([a,b,c],x,0,R).
 splice([a,b,c],x,2,R).
 
 remove_dups([a,b,[a],c,d], R).
+remove_dups([[a,b],b,c,[a,b],[a,b]], R).
 
-flatten ([1,2,[[3,4],5]], R).
+---LISTO
+flatten2([1,2,[[3,4],5]], R).
+flatten2([a,[b,c],[[[d],e,f]]], R).
+---LISTO
+
+find_zero([a,[b,0],c]).
+find_zero([a,[b,c],d]).
