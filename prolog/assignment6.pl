@@ -28,6 +28,7 @@ splice([], _, N, _):-
 	false,!.
 
 %% Cuasi funciona
+%% 6.5
 remove_dups([],R):-
 	R = [],!.	
 remove_dups([H|T], R):-
@@ -38,6 +39,14 @@ remove_dups([H|T], R):-
 	in_list(H,T),
 	remove_dups(T,R),!.
 	%% Duplicados se desordenan, resolver
+
+%% 7.- Find Zero funciona!
+find_zero([]):-
+	false,!.
+find_zero([0|_]):-
+	true,!.
+find_zero([H | T]):-
+	find_zero(H); find_zero(T),!.
 
 %% 8.- flatten
 flatten2([],R):-
@@ -52,14 +61,7 @@ flatten2(A,R):-
 	number(A),
 	R = A.
 
-%% 7.- Find Zero funciona?
-find_zero([]):-
-	false,!.
-find_zero([0|_]):-
-	true,!.
-find_zero([H | T]):-
-	find_zero(H); find_zero(T).
-	%% Falta cortar en algún punto
+
 
 %% 9:- insert listo Funciona
 numberOrAtomic(A):-
@@ -84,7 +86,7 @@ isTree(tree(_,_,_)).
 %% Funciona
 increase(T,A):-
 	isTree(T),
-	getEI(E,I),
+	getEI(E,I,T),
 	increase(T,A,E,I).
 increase(tree(E,T1,T2),A,E,I):-
 	I2 is I+E,
@@ -100,6 +102,18 @@ increase(T,T,_,_):-
 	not(isTree(T)).
 increase(nil,nil,_,_).
 
+hasE(tree(E,_,_),E):-
+	true,!.
+hasE(tree(_,T1,T2),E):-
+	hasE(T1,E); hasE(T2,E),!.
+
+getEI(E,I,T):-
+	write('Element? '),
+	read(E),
+	hasE(T,E),
+	write('Increase? '),
+	read(I).
+
 %% 10 LEAVES (Funciona)
 leaves(tree(_, nil,nil), 1).
 leaves(nil, 0).
@@ -108,12 +122,7 @@ leaves(tree(_, T1, T2), H):-
 	leaves(T2, H2),
 	H is H1+H2,!.
 
-getEI(E,I):-
-	write('Element? '),
-	read(E),!,
-	nl,
-	write('Increase? '),
-	read(I),!.
+
 
 
 
