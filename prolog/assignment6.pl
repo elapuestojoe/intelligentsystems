@@ -1,3 +1,6 @@
+%% Auxiliary functions:
+
+%% Our version of member(H,T)
 in_list(_, []):-
 	false.
 in_list(X, [X | _]):-
@@ -5,15 +8,46 @@ in_list(X, [X | _]):-
 in_list(X, [_ | T]):-
 	in_list(X, T).
 
+%% Appends H,T 
 myAppend([H|T], H, T).
 
-%% 4:- duplicate_entries LISTO
+%% Eliminates first element from list
+eliminate(_, [], R):-
+    R = [], !.
+eliminate(H, [H|T], R):-
+    eliminate(H, T, R),
+    !.
+eliminate(X, [H|T], [H|Y]):-
+    eliminate(X, T, Y).
+
+%% True if A is either number or atomic
+numberOrAtomic(A):-
+	number(A);atomic(A).
+
+%% True if parameter is a tree(_,_,_)
+isTree(tree(_,_,_)).
+
+%% Checks if a tree has an element
+hasE(tree(E,_,_),E):-
+	true,!.
+hasE(tree(_,T1,T2),E):-
+	hasE(T1,E); hasE(T2,E),!.
+
+%% Function to get E,I as input
+getEI(E,I,T):-
+	write('Element? '),
+	read(E),
+	hasE(T,E),
+	write('Increase? '),
+	read(I).
+
+%% 4:- duplicate_entries
 duplicate_entries([]):-
 	false.
 duplicate_entries([H | T]):-
 	in_list(H, T), \+ duplicate_entries(T).	 %%Green cut
 
-%% 5:- splice LISTO
+%% 5:- splice
 splice([], X, 0,R):-
 	R = [X],!.
 splice(L, X, 0, R):-
@@ -27,20 +61,18 @@ splice([], _, N, _):-
 	N > 0,
 	false,!.
 
-%% Cuasi funciona
-%% 6.5
-remove_dups([],R):-
-	R = [],!.	
+%% 6 remove_dups
+remove_dups([], Z):-
+    Z = [], !.
 remove_dups([H|T], R):-
-	not(in_list(H,T)),
-	remove_dups(T, R2),
-	R = [H|R2],!.
-remove_dups([H|T], R):-
-	in_list(H,T),
-	remove_dups(T,R),!.
-	%% Duplicados se desordenan, resolver
+    in_list(H, T),
+    eliminate(H, T, R2),
+    remove_dups([H|R2], R),
+    !.
+remove_dups([H|T1], [H|T2]):-
+    remove_dups(T1, T2).
 
-%% 7.- Find Zero funciona!
+%% 7 find_zero
 find_zero([]):-
 	false,!.
 find_zero([0|_]):-
@@ -48,24 +80,19 @@ find_zero([0|_]):-
 find_zero([H | T]):-
 	find_zero(H); find_zero(T),!.
 
-%% 8.- flatten
+%% 8.- flatten2 (used 2 to avoid conflicting with native flatten method)
 flatten2([],R):-
-	R = [],!.
-flatten2([H|[]],R):-
-	flatten2(H,R).
-flatten2([H|T],R):-
-	flatten2(H,R2),
-	flatten2(T,R3),
-	R = [R2|R3],!.
-flatten2(A,R):-
-	number(A),
-	R = A.
+    R = [], !.
+flatten2([H|T], R):-
+    is_list(H),
+    flatten(H, R2),
+    flatten(T, R3),
+    append(R2, R3, R),
+    !.
+flatten2([H|T1], [H|T2]):-
+    flatten(T1, T2).
 
-
-
-%% 9:- insert listo Funciona
-numberOrAtomic(A):-
-	number(A);atomic(A).
+%% 9:- insert
 insert(_,[],R):-
 	R = [],!.
 insert(A,[H|T],[H,A|R2]):-
@@ -76,14 +103,15 @@ insert(A,[H|T],[R2|R3]):-
 	insert(A,H,R2),
 	insert(A,T,R3),!.
 
-isTree(tree(_,_,_)).
+%% 10 LEAVES (Funciona)
+leaves(tree(_, nil,nil), 1).
+leaves(nil, 0).
+leaves(tree(_, T1, T2), H):-
+	leaves(T1, H1),
+	leaves(T2, H2),
+	H is H1+H2,!.
 
-%% Increase
-%% Esto recursivamente aumenta TODOS los elementos del árbol, haciendo que un cut no sea muy eficiente...
-%% Quizá lo que busca el profesor es que solo sea el primer elemento? en ese caso un cut tendría sentido...
-%% Urge legislar
-
-%% Funciona
+%% 11: increase
 increase(T,A):-
 	isTree(T),
 	getEI(E,I,T),
@@ -100,30 +128,4 @@ increase(tree(R,T1,T2),A,E,I):-
 	A = tree(R,T1_2,T2_2),!.
 increase(T,T,_,_):-
 	not(isTree(T)).
-increase(nil,nil,_,_).
-
-hasE(tree(E,_,_),E):-
-	true,!.
-hasE(tree(_,T1,T2),E):-
-	hasE(T1,E); hasE(T2,E),!.
-
-getEI(E,I,T):-
-	write('Element? '),
-	read(E),
-	hasE(T,E),
-	write('Increase? '),
-	read(I).
-
-%% 10 LEAVES (Funciona)
-leaves(tree(_, nil,nil), 1).
-leaves(nil, 0).
-leaves(tree(_, T1, T2), H):-
-	leaves(T1, H1),
-	leaves(T2, H2),
-	H is H1+H2,!.
-
-
-
-
-
-
+increase(nil,false,_,_).
